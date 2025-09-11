@@ -15,6 +15,11 @@ export const metadata: Metadata = {
   creator: "Gargantua Technologies",
   publisher: "Gargantua Technologies",
   robots: "index, follow",
+  icons: {
+    icon: "/images/icon-blue.png",
+    shortcut: "/images/icon-blue.png",
+    apple: "/images/icon-blue.png",
+  },
   openGraph: {
     type: "website",
     locale: "pt_BR",
