@@ -1,7 +1,7 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import { ArrowRight, Mail, Phone } from "lucide-react"
+import { ArrowRight } from "lucide-react"
 
 interface CTASectionProps {
   currentLang: "pt" | "en"
@@ -14,10 +14,6 @@ const translations = {
     description: "Nossa equipe está pronta para mergulhar nos seus processos e criar soluções que transcendem o comum.",
     ctaPrimary: "Iniciar Projeto",
     ctaSecondary: "Agendar Reunião",
-    contact: {
-      email: "contato@gargantua.tech",
-      phone: "+55 (11) 99999-9999",
-    },
   },
   en: {
     title: "Ready to Reach Singularity?",
@@ -25,10 +21,6 @@ const translations = {
     description: "Our team is ready to dive into your processes and create solutions that transcend the ordinary.",
     ctaPrimary: "Start Project",
     ctaSecondary: "Schedule Meeting",
-    contact: {
-      email: "contact@gargantua.tech",
-      phone: "+55 (11) 99999-9999",
-    },
   },
 }
 
@@ -61,17 +53,6 @@ export function CTASection({ currentLang }: CTASectionProps) {
             </Button>
           </div>
 
-          {/* Contact Info */}
-          <div className="flex flex-col sm:flex-row gap-8 justify-center items-center text-white/80">
-            <div className="flex items-center gap-2">
-              <Mail className="h-5 w-5 text-[#20BCED]" />
-              <span>{t.contact.email}</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Phone className="h-5 w-5 text-[#20BCED]" />
-              <span>{t.contact.phone}</span>
-            </div>
-          </div>
         </div>
       </div>
 

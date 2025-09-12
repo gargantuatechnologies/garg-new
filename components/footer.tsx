@@ -10,40 +10,12 @@ interface FooterProps {
 const translations = {
   pt: {
     tagline: "Alcançando a singularidade através da tecnologia",
-    company: "Empresa",
-    about: "Sobre Nós",
-    services: "Serviços",
-    portfolio: "Portfólio",
-    contact: "Contato",
-    solutions: "Soluções",
-    payments: "Pagamentos",
-    baas: "Banking as a Service",
-    mobile: "Aplicativos Mobile",
-    erp: "Sistemas ERP",
-    bi: "Business Intelligence",
-    audit: "Auditoria Imersiva",
-    contactInfo: "Informações de Contato",
-    address: "São Paulo, SP - Brasil",
     rights: "Todos os direitos reservados.",
     privacy: "Política de Privacidade",
     terms: "Termos de Uso",
   },
   en: {
     tagline: "Reaching singularity through technology",
-    company: "Company",
-    about: "About Us",
-    services: "Services",
-    portfolio: "Portfolio",
-    contact: "Contact",
-    solutions: "Solutions",
-    payments: "Payments",
-    baas: "Banking as a Service",
-    mobile: "Mobile Apps",
-    erp: "ERP Systems",
-    bi: "Business Intelligence",
-    audit: "Immersive Audit",
-    contactInfo: "Contact Information",
-    address: "São Paulo, SP - Brazil",
     rights: "All rights reserved.",
     privacy: "Privacy Policy",
     terms: "Terms of Use",
@@ -60,7 +32,7 @@ export function Footer({ currentLang }: FooterProps) {
           {/* Logo and Description */}
           <div className="md:col-span-1">
             <Image
-              src="/images/logo-light.png"
+              src="/images/icon-white.png"
               alt="Gargantua Technologies"
               width={200}
               height={40}
@@ -80,85 +52,48 @@ export function Footer({ currentLang }: FooterProps) {
             </div>
           </div>
 
-          {/* Company Links */}
+          {/* United States */}
           <div>
-            <h3 className="text-lg font-bold mb-4">{t.company}</h3>
-            <ul className="space-y-2">
-              <li>
-                <a href="#" className="text-[#878EA0] hover:text-[#20BCED] transition-colors">
-                  {t.about}
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-[#878EA0] hover:text-[#20BCED] transition-colors">
-                  {t.services}
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-[#878EA0] hover:text-[#20BCED] transition-colors">
-                  {t.portfolio}
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-[#878EA0] hover:text-[#20BCED] transition-colors">
-                  {t.contact}
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          {/* Solutions Links */}
-          <div>
-            <h3 className="text-lg font-bold mb-4">{t.solutions}</h3>
-            <ul className="space-y-2">
-              <li>
-                <a href="#" className="text-[#878EA0] hover:text-[#20BCED] transition-colors">
-                  {t.payments}
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-[#878EA0] hover:text-[#20BCED] transition-colors">
-                  {t.baas}
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-[#878EA0] hover:text-[#20BCED] transition-colors">
-                  {t.mobile}
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-[#878EA0] hover:text-[#20BCED] transition-colors">
-                  {t.erp}
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-[#878EA0] hover:text-[#20BCED] transition-colors">
-                  {t.bi}
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-[#878EA0] hover:text-[#20BCED] transition-colors">
-                  {t.audit}
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          {/* Contact Info */}
-          <div>
-            <h3 className="text-lg font-bold mb-4">{t.contactInfo}</h3>
-            <ul className="space-y-3">
-              <li className="flex items-center gap-2 text-[#878EA0]">
-                <Mail className="h-4 w-4 text-[#20BCED]" />
-                <span>contato@gargantua.tech</span>
-              </li>
-              <li className="flex items-center gap-2 text-[#878EA0]">
+            <h3 className="text-lg font-bold mb-4 text-white">United States</h3>
+            <ul className="space-y-2 text-[#878EA0]">
+              <li className="font-semibold">Ligiga LLC - 802754373</li>
+              <li className="flex items-center gap-2">
                 <Phone className="h-4 w-4 text-[#20BCED]" />
-                <span>+55 (11) 99999-9999</span>
+                <span>+1 (407) 680-7191</span>
               </li>
-              <li className="flex items-center gap-2 text-[#878EA0]">
-                <MapPin className="h-4 w-4 text-[#20BCED]" />
-                <span>{t.address}</span>
+              <li className="flex items-start gap-2">
+                <MapPin className="h-4 w-4 text-[#20BCED] mt-1" />
+                <span>3 Parklane Blvd, Suite 1005W<br />Dearborn, MI</span>
+              </li>
+            </ul>
+          </div>
+
+          {/* Brazil */}
+          <div>
+            <h3 className="text-lg font-bold mb-4 text-white">Brazil</h3>
+            <ul className="space-y-2 text-[#878EA0]">
+              <li className="font-semibold">Gargantua Technologies LTDA</li>
+              <li className="text-sm">57.873.343/0001-88</li>
+              <li className="flex items-center gap-2">
+                <Phone className="h-4 w-4 text-[#20BCED]" />
+                <span>+55 (92) 98165-9541</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <MapPin className="h-4 w-4 text-[#20BCED] mt-1" />
+                <span>R, Pastor Oswald Hesse, 730<br />Blumenau - SC (89015-100)</span>
+              </li>
+            </ul>
+          </div>
+
+          {/* United Arab Emirates */}
+          <div>
+            <h3 className="text-lg font-bold mb-4 text-white">United Arab Emirates</h3>
+            <ul className="space-y-2 text-[#878EA0]">
+              <li className="font-semibold">Ligiga LLC - 2111711.01</li>
+              <li className="text-sm">Sharjah Media City (Shams)</li>
+              <li className="flex items-center gap-2">
+                <Phone className="h-4 w-4 text-[#20BCED]" />
+                <span>+971 58 253 3528</span>
               </li>
             </ul>
           </div>
@@ -166,7 +101,7 @@ export function Footer({ currentLang }: FooterProps) {
 
         {/* Bottom Bar */}
         <div className="border-t border-[#333333] mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
-          <p className="text-[#878EA0] text-sm">© 2024 Gargantua Technologies. {t.rights}</p>
+          <p className="text-[#878EA0] text-sm">© 2025 Gargantua Technologies. {t.rights}</p>
           <div className="flex space-x-6 mt-4 md:mt-0">
             <a href="#" className="text-[#878EA0] hover:text-[#20BCED] text-sm transition-colors">
               {t.privacy}

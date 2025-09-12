@@ -237,7 +237,7 @@ const translations = {
   const t = translations[currentLang as keyof typeof translations] || translations.pt;
 
   return (
-    <section className="py-24 bg-gradient-to-br from-[#e8eef5] via-[#f8fafc] to-[#e2e8f0] relative overflow-hidden">
+    <section id="concept" className="py-24 bg-gradient-to-br from-[#e8eef5] via-[#f8fafc] to-[#e2e8f0] relative overflow-hidden">
       {/* Gravitational Mesh Background - Static */}
       <GravitationalMesh />
 

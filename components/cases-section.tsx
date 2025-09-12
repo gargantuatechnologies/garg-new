@@ -1,9 +1,9 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { ExternalLink, Github, ArrowRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight, ArrowRight } from 'lucide-react';
 
 interface CasesSectionProps {
   currentLang: 'pt' | 'en';
@@ -12,233 +12,298 @@ interface CasesSectionProps {
 const translations = {
   pt: {
     title: "Nossos Cases",
-    subtitle: "Projetos que transformaram negócios e definiram o futuro",
-    cta: "Ver Todos os Cases",
+    subtitle: "Transformações reais que impactaram o mercado brasileiro",
+    cta: "Conheça Nossos Cases",
     cases: [
       {
         id: 1,
-        title: "Fintech Revolution",
-        description: "Plataforma de pagamentos completa que processou mais de R$ 50 milhões em transações no primeiro ano.",
-        category: "Fintech",
-        technologies: ["React", "Node.js", "PostgreSQL", "AWS"],
-        image: "/placeholder.jpg",
-        link: "#",
-        github: "#",
-        stats: {
-          transactions: "R$ 50M+",
-          users: "10K+",
-          uptime: "99.9%"
-        }
+        title: "Grupo Fast",
+        subtitle: "FastPay & FastSoft",
+        description: "Parceria estratégica para transformar o white-label da FastSoft em uma solução completamente personalizável, aumentando exponencialmente a demanda e satisfação dos clientes.",
+        challenge: "Time de desenvolvimento alocado internamente, demanda crescente por personalizações no sistema white-label.",
+        solution: "Atuamos como parceiros oficiais de personalização e integração, liderando a frente de aplicativos mobile e transformando o produto em uma solução totalmente customizável.",
+        category: "Pagamentos",
+        images: [
+          "/images/fast-group-cases/ALLUS-DASH.png",
+          "/images/fast-group-cases/app-payhub.png",
+          "/images/fast-group-cases/App-fastpay-mockup.png",
+          "/images/fast-group-cases/dashboard-payhub.png"
+        ],
+        stats: {}
       },
       {
         id: 2,
-        title: "E-commerce Intelligence",
-        description: "Sistema de BI avançado que aumentou as vendas em 300% através de análises preditivas.",
-        category: "E-commerce",
-        technologies: ["Python", "TensorFlow", "Docker", "Kubernetes"],
+        title: "DCréditos",
+        subtitle: "Empréstimos para MPEs",
+        description: "Desenvolvimento de sistema completo que revolucionou as operações da DCréditos, reduzindo fraudes em 90% e otimizando drasticamente os processos internos.",
+        challenge: "Sistema engessado, dificuldade de escalar, fraudes por múltiplas contas bancárias e conciliação manual.",
+        solution: "Construímos um sistema sob medida utilizando IA para cobranças e BaaS próprio, automatizando transações e aumentando a visibilidade de métricas.",
+        category: "Fintech",
         image: "/placeholder.jpg",
-        link: "#",
-        github: "#",
-        stats: {
-          sales: "+300%",
-          users: "25K+",
-          accuracy: "95%"
-        }
-      },
-      {
-        id: 3,
-        title: "Banking as a Service",
-        description: "Infraestrutura bancária completa que permitiu a criação de 15+ fintechs em 6 meses.",
-        category: "BaaS",
-        technologies: ["Go", "Microservices", "Redis", "MongoDB"],
-        image: "/placeholder.jpg",
-        link: "#",
-        github: "#",
-        stats: {
-          apis: "50+",
-          fintechs: "15+",
-          latency: "<100ms"
-        }
+        stats: {}
       }
     ]
   },
   en: {
     title: "Our Cases",
-    subtitle: "Projects that transformed businesses and defined the future",
-    cta: "View All Cases",
+    subtitle: "Real transformations that impacted the Brazilian market",
+    cta: "Discover Our Cases",
     cases: [
       {
         id: 1,
-        title: "Fintech Revolution",
-        description: "Complete payment platform that processed over $10 million in transactions in the first year.",
-        category: "Fintech",
-        technologies: ["React", "Node.js", "PostgreSQL", "AWS"],
-        image: "/placeholder.jpg",
-        link: "#",
-        github: "#",
-        stats: {
-          transactions: "$10M+",
-          users: "10K+",
-          uptime: "99.9%"
-        }
+        title: "Grupo Fast",
+        subtitle: "FastPay & FastSoft",
+        description: "Strategic partnership to transform FastSoft's white-label into a completely customizable solution, exponentially increasing demand and client satisfaction.",
+        challenge: "Development team allocated internally, growing demand for white-label system customizations.",
+        solution: "We acted as official customization and integration partners, leading the mobile apps front and transforming the product into a fully customizable solution.",
+        category: "Payments",
+        images: [
+          "/images/fast-group-cases/ALLUS-DASH.png",
+          "/images/fast-group-cases/app-payhub.png",
+          "/images/fast-group-cases/App-fastpay-mockup.png",
+          "/images/fast-group-cases/dashboard-payhub.png"
+        ],
+        stats: {}
       },
       {
         id: 2,
-        title: "E-commerce Intelligence",
-        description: "Advanced BI system that increased sales by 300% through predictive analytics.",
-        category: "E-commerce",
-        technologies: ["Python", "TensorFlow", "Docker", "Kubernetes"],
+        title: "DCréditos",
+        subtitle: "Loans for SMEs",
+        description: "Complete system development that revolutionized DCréditos operations, reducing fraud by 90% and drastically optimizing internal processes.",
+        challenge: "Rigid system, scaling difficulties, fraud from multiple bank accounts and manual reconciliation.",
+        solution: "We built a tailored system using AI for collections and proprietary BaaS, automating transactions and increasing metrics visibility.",
+        category: "Fintech",
         image: "/placeholder.jpg",
-        link: "#",
-        github: "#",
-        stats: {
-          sales: "+300%",
-          users: "25K+",
-          accuracy: "95%"
-        }
-      },
-      {
-        id: 3,
-        title: "Banking as a Service",
-        description: "Complete banking infrastructure that enabled the creation of 15+ fintechs in 6 months.",
-        category: "BaaS",
-        technologies: ["Go", "Microservices", "Redis", "MongoDB"],
-        image: "/placeholder.jpg",
-        link: "#",
-        github: "#",
-        stats: {
-          apis: "50+",
-          fintechs: "15+",
-          latency: "<100ms"
-        }
+        stats: {}
       }
     ]
   }
 };
 
-// Componente para o Card de Case
-const CaseCard = ({ case: caseItem, index }: { case: any; index: number }) => (
-  <Card className="group relative overflow-hidden bg-gradient-to-br from-[#0a0a0a] to-[#1a1a1a] border border-[#126AF9]/20 hover:border-[#20BCED]/40 transition-all duration-500 hover:scale-105 hover:-translate-y-2">
-    {/* Background Pattern */}
-    <div className="absolute inset-0 opacity-5">
-      <div className="absolute inset-0 bg-gradient-to-br from-[#126AF9]/10 via-transparent to-[#20BCED]/10"></div>
-    </div>
-    
+// Componente para o Card de Case no Carrossel
+const CaseCard = ({ case: caseItem, onPrev, onNext, onSetCase, currentCase, totalCases }: { 
+  case: any; 
+  onPrev: () => void; 
+  onNext: () => void; 
+  onSetCase: (index: number) => void;
+  currentCase: number; 
+  totalCases: number; 
+}) => {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  
+  // Reset image index when case changes
+  React.useEffect(() => {
+    setCurrentImageIndex(0);
+  }, [currentCase]);
+
+  const nextImage = () => {
+    if (caseItem.images && caseItem.images.length > 1) {
+      setCurrentImageIndex((prev) => (prev + 1) % caseItem.images.length);
+    }
+  };
+
+  const prevImage = () => {
+    if (caseItem.images && caseItem.images.length > 1) {
+      setCurrentImageIndex((prev) => (prev - 1 + caseItem.images.length) % caseItem.images.length);
+    }
+  };
+
+  return (
+  <div className="relative w-full h-[600px]">
     {/* Content */}
-    <div className="relative z-10 p-6">
-      {/* Header */}
-      <div className="flex items-start justify-between mb-4">
-        <div>
-          <span className="inline-block px-3 py-1 text-xs font-semibold text-[#20BCED] bg-[#20BCED]/10 rounded-full mb-2">
-            {caseItem.category}
-          </span>
-          <h3 className="text-xl font-bold text-white group-hover:text-[#20BCED] transition-colors duration-300">
-            {caseItem.title}
-          </h3>
-        </div>
-        <div className="flex space-x-2">
-          <Button size="sm" variant="ghost" className="h-8 w-8 p-0 hover:bg-[#126AF9]/20">
-            <ExternalLink className="h-4 w-4 text-[#20BCED]" />
-          </Button>
-          <Button size="sm" variant="ghost" className="h-8 w-8 p-0 hover:bg-[#126AF9]/20">
-            <Github className="h-4 w-4 text-[#20BCED]" />
-          </Button>
-        </div>
-      </div>
-
-      {/* Description */}
-      <p className="text-[#B6E1F2] text-sm leading-relaxed mb-4">
-        {caseItem.description}
-      </p>
-
-      {/* Stats */}
-      <div className="grid grid-cols-3 gap-4 mb-4">
-        {Object.entries(caseItem.stats).map(([key, value]) => (
-          <div key={key} className="text-center">
-            <div className="text-lg font-bold text-[#20BCED]">{value}</div>
-            <div className="text-xs text-[#B6E1F2] capitalize">{key}</div>
+    <div className="absolute inset-0 flex items-center px-16 lg:px-24">
+      <div className="w-full max-w-7xl mx-auto grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+        {/* Left Side - Content */}
+        <div className="space-y-4">
+          {/* Category & Title */}
+          <div>
+            <span className="inline-block px-4 py-2 text-sm font-semibold text-[#20BCED] bg-[#20BCED]/20 rounded-full mb-4">
+              {caseItem.category}
+            </span>
+            <h2 className="text-3xl lg:text-4xl font-black text-white mb-2">
+              {caseItem.title}
+            </h2>
+            <h3 className="text-lg lg:text-xl text-[#20BCED] font-semibold">
+              {caseItem.subtitle}
+            </h3>
           </div>
-        ))}
+
+          {/* Description */}
+          <p className="text-base text-[#B6E1F2] leading-relaxed">
+            {caseItem.description}
+          </p>
+
+          {/* Challenge & Solution */}
+          <div className="space-y-3">
+            <div>
+              <h4 className="text-xs font-semibold text-[#20BCED] mb-1">O DESAFIO:</h4>
+              <p className="text-xs text-[#B6E1F2]">{caseItem.challenge}</p>
+            </div>
+            <div>
+              <h4 className="text-xs font-semibold text-[#20BCED] mb-1">NOSSA SOLUÇÃO:</h4>
+              <p className="text-xs text-[#B6E1F2]">{caseItem.solution}</p>
+            </div>
+          </div>
+
+        </div>
+
+        {/* Right Side - Image Gallery */}
+        <div className="relative">
+          <div className="w-full h-80 rounded-xl overflow-hidden border border-[#126AF9]/30 relative group bg-gradient-to-br from-[#0a0a0a] to-[#1a1a1a]">
+            <img
+              src={caseItem.images ? caseItem.images[currentImageIndex] : caseItem.image}
+              alt={caseItem.title}
+              className="w-full h-full object-contain transition-all duration-500"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+            
+            {/* Image Navigation - Only show if multiple images */}
+            {caseItem.images && caseItem.images.length > 1 && (
+              <>
+                {/* Previous Image Button */}
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    prevImage();
+                  }}
+                  className="absolute left-2 top-1/2 transform -translate-y-1/2 w-8 h-8 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300"
+                >
+                  <ChevronLeft className="h-4 w-4" />
+                </button>
+                
+                {/* Next Image Button */}
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    nextImage();
+                  }}
+                  className="absolute right-2 top-1/2 transform -translate-y-1/2 w-8 h-8 bg-black/50 hover:bg-black/70 text-white rounded-full flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300"
+                >
+                  <ChevronRight className="h-4 w-4" />
+                </button>
+                
+                {/* Image Counter */}
+                <div className="absolute bottom-2 right-2 bg-black/50 text-white text-xs px-2 py-1 rounded">
+                  {currentImageIndex + 1} / {caseItem.images.length}
+                </div>
+                
+                {/* Image Dots */}
+                <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 flex space-x-1">
+                  {caseItem.images.map((_: any, index: number) => (
+                    <button
+                      key={index}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setCurrentImageIndex(index);
+                      }}
+                      className={`w-2 h-2 rounded-full transition-all duration-300 ${
+                        index === currentImageIndex 
+                          ? 'bg-white' 
+                          : 'bg-white/50 hover:bg-white/70'
+                      }`}
+                    />
+                  ))}
+                </div>
+              </>
+            )}
+          </div>
+        </div>
       </div>
 
-      {/* Technologies */}
-      <div className="flex flex-wrap gap-2 mb-4">
-        {caseItem.technologies.map((tech: string, techIndex: number) => (
-          <span
-            key={techIndex}
-            className="px-2 py-1 text-xs text-[#126AF9] bg-[#126AF9]/10 rounded-md"
+      {/* Navigation Controls */}
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex items-center space-x-4">
+          {/* Previous Button */}
+          <Button
+            onClick={(e) => {
+              e.stopPropagation();
+              onPrev();
+            }}
+            className="flex items-center space-x-2 bg-[#126AF9]/20 hover:bg-[#126AF9]/30 text-[#20BCED] border border-[#126AF9]/30 hover:border-[#20BCED]/50 transition-all duration-300"
           >
-            {tech}
-          </span>
-        ))}
-      </div>
+            <ChevronLeft className="h-5 w-5" />
+            <span>Anterior</span>
+          </Button>
 
-      {/* CTA */}
-      <Button 
-        className="w-full bg-gradient-to-r from-[#126AF9] to-[#20BCED] hover:opacity-90 text-white font-semibold py-2 text-sm transition-all duration-300 group-hover:scale-105"
-        style={{
-          background: 'linear-gradient(45deg, #126AF9, #20BCED, #B6E1F2, #126AF9)',
-          backgroundSize: '200% 200%',
-          animation: 'gradient-flow 3s ease infinite'
-        }}
-      >
-        <span className="relative z-10">Ver Detalhes</span>
-        <ArrowRight className="ml-2 h-4 w-4 relative z-10" />
-      </Button>
+          {/* Dots Indicator */}
+          <div className="flex space-x-3">
+            {Array.from({ length: totalCases }, (_, index) => (
+              <button
+                key={index}
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onSetCase(index);
+                }}
+                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                  index === currentCase 
+                    ? 'bg-[#20BCED] scale-125' 
+                    : 'bg-[#126AF9]/40 hover:bg-[#126AF9]/60'
+                }`}
+              />
+            ))}
+          </div>
+
+          {/* Next Button */}
+          <Button
+            onClick={(e) => {
+              e.stopPropagation();
+              onNext();
+            }}
+            className="flex items-center space-x-2 bg-[#126AF9]/20 hover:bg-[#126AF9]/30 text-[#20BCED] border border-[#126AF9]/30 hover:border-[#20BCED]/50 transition-all duration-300"
+          >
+            <span>Próximo</span>
+            <ChevronRight className="h-5 w-5" />
+          </Button>
+        </div>
     </div>
-
-    {/* Hover Effect */}
-    <div className="absolute inset-0 bg-gradient-to-r from-[#126AF9]/5 via-[#20BCED]/10 to-[#126AF9]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-  </Card>
-);
+  </div>
+  );
+};
 
 // Componente principal
 export function CasesSection({ currentLang }: CasesSectionProps) {
+  const [currentCase, setCurrentCase] = useState(0);
   const t = translations[currentLang];
 
+  const nextCase = () => {
+    setCurrentCase((prev) => (prev + 1) % t.cases.length);
+  };
+
+  const prevCase = () => {
+    setCurrentCase((prev) => (prev - 1 + t.cases.length) % t.cases.length);
+  };
+
   return (
-    <section className="py-16 bg-gradient-to-br from-[#0a0a0a] via-[#1a1a1a] to-[#0f0f0f] relative overflow-hidden">
+    <section id="cases" className="py-16 relative overflow-hidden">
       {/* Background Effects */}
-      <div className="absolute inset-0">
+      <div className="absolute inset-0 bg-gradient-to-br from-[#0a0a0a] via-[#1a1a1a] to-[#0f0f0f]">
+        <div className="absolute inset-0 bg-gradient-to-r from-[#126AF9]/20 via-transparent to-[#20BCED]/20"></div>
         <div className="absolute top-20 left-20 w-40 h-40 bg-gradient-to-r from-[#126AF9]/10 to-[#20BCED]/10 rounded-full blur-3xl"></div>
         <div className="absolute bottom-20 right-20 w-40 h-40 bg-gradient-to-r from-[#20BCED]/10 to-[#B6E1F2]/10 rounded-full blur-3xl"></div>
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-32 bg-gradient-to-r from-[#B6E1F2]/8 to-[#126AF9]/8 rounded-full blur-2xl"></div>
       </div>
 
-      <div className="container mx-auto px-4 relative z-10">
+      {/* Carousel */}
+      <div className="relative h-[600px]">
         {/* Header */}
-        <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-[#126AF9] to-[#20BCED] mb-4">
+        <div className="absolute -top-2 left-0 right-0 text-center px-4 z-20">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-[#126AF9] to-[#20BCED] mb-1">
             {t.title}
           </h2>
           <p className="text-lg text-[#B6E1F2] max-w-2xl mx-auto leading-relaxed">
             {t.subtitle}
           </p>
         </div>
-
-        {/* Cases Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
-          {t.cases.map((caseItem, index) => (
-            <CaseCard key={caseItem.id} case={caseItem} index={index} />
-          ))}
-        </div>
-
-        {/* CTA */}
-        <div className="text-center">
-          <Button 
-            size="lg"
-            className="bg-gradient-to-r from-[#126AF9] to-[#20BCED] hover:opacity-90 text-white font-bold px-8 py-4 text-lg rounded-2xl transition-all duration-300 hover:scale-105 hover:-translate-y-1"
-            style={{
-              background: 'linear-gradient(45deg, #126AF9, #20BCED, #B6E1F2, #126AF9)',
-              backgroundSize: '200% 200%',
-              animation: 'gradient-flow 3s ease infinite'
-            }}
-          >
-            <span className="relative z-10">{t.cta}</span>
-            <ArrowRight className="ml-3 h-5 w-5 relative z-10" />
-          </Button>
-        </div>
+        <CaseCard 
+          key={t.cases[currentCase].id} 
+          case={t.cases[currentCase]} 
+          onPrev={prevCase}
+          onNext={nextCase}
+          onSetCase={setCurrentCase}
+          currentCase={currentCase}
+          totalCases={t.cases.length}
+        />
       </div>
+
 
       {/* CSS Animations */}
       <style jsx>{`

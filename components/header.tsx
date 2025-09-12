@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
+import { WorkWithUsDialog } from "@/components/work-with-us-dialog"
 import { Globe, Menu, X } from "lucide-react"
 import Image from "next/image"
 
@@ -38,8 +39,16 @@ export function Header({ currentLang, onLanguageChange }: HeaderProps) {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId)
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth' })
+    }
+    setIsMobileMenuOpen(false)
+  }
+
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-500" style={{ zIndex: 9999 }}>
+    <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-500" style={{ zIndex: 50 }}>
       <div
         className={`glass-floating-enhanced px-8 py-4 transition-all duration-500 ${
           isScrolled 
@@ -62,28 +71,27 @@ export function Header({ currentLang, onLanguageChange }: HeaderProps) {
 
           {/* Navegação desktop */}
           <nav className="hidden lg:flex items-center space-x-6">
-            <a 
-              href="#about" 
+            <button 
+              onClick={() => scrollToSection('concept')}
               className="text-[#c5d4e6] hover:text-[#e8eef5] transition-colors font-medium text-sm px-4 py-1.5 rounded-full hover:bg-[#126AF9]/10"
             >
               {t.about}
-            </a>
-            <a 
-              href="#portfolio" 
+            </button>
+            <button 
+              onClick={() => scrollToSection('cases')}
               className="text-[#c5d4e6] hover:text-[#e8eef5] transition-colors font-medium text-sm px-4 py-1.5 rounded-full hover:bg-[#126AF9]/10"
             >
               {t.portfolio}
-            </a>
-            <a 
-              href="#work-with-us" 
-              className="text-[#c5d4e6] hover:text-[#e8eef5] transition-colors font-medium text-sm px-4 py-1.5 rounded-full hover:bg-[#126AF9]/10"
-            >
-              {t.workWithUs}
-            </a>
+            </button>
+            <WorkWithUsDialog currentLang={currentLang}>
+              <button className="text-[#c5d4e6] hover:text-[#e8eef5] transition-colors font-medium text-sm px-4 py-1.5 rounded-full hover:bg-[#126AF9]/10">
+                {t.workWithUs}
+              </button>
+            </WorkWithUsDialog>
             <Button
               variant="outline"
               size="sm"
-              className="border-[#8b9bb3] text-[#c5d4e6] hover:bg-[#8b9bb3] hover:text-[#0a0a0a] bg-transparent px-5 py-1.5 text-sm rounded-full"
+              className="border-[#8b9bb3] text-[#c5d4e6] hover:bg-[#8b9bb3] hover:text-white bg-transparent px-5 py-1.5 text-sm rounded-full"
             >
               {t.contact}
             </Button>
@@ -131,31 +139,30 @@ export function Header({ currentLang, onLanguageChange }: HeaderProps) {
         {isMobileMenuOpen && (
           <div className="absolute top-full left-0 right-0 mt-4 glass-floating rounded-2xl p-4 border border-[#4a5568]/20">
             <nav className="flex flex-col space-y-3">
-              <a 
-                href="#about" 
-                className="text-[#c5d4e6] hover:text-[#e8eef5] transition-colors font-medium text-sm px-3 py-2 rounded-full hover:bg-[#126AF9]/10"
-                onClick={() => setIsMobileMenuOpen(false)}
+              <button 
+                onClick={() => scrollToSection('concept')}
+                className="text-[#c5d4e6] hover:text-[#e8eef5] transition-colors font-medium text-sm px-3 py-2 rounded-full hover:bg-[#126AF9]/10 text-left"
               >
                 {t.about}
-              </a>
-              <a 
-                href="#portfolio" 
-                className="text-[#c5d4e6] hover:text-[#e8eef5] transition-colors font-medium text-sm px-3 py-2 rounded-full hover:bg-[#126AF9]/10"
-                onClick={() => setIsMobileMenuOpen(false)}
+              </button>
+              <button 
+                onClick={() => scrollToSection('cases')}
+                className="text-[#c5d4e6] hover:text-[#e8eef5] transition-colors font-medium text-sm px-3 py-2 rounded-full hover:bg-[#126AF9]/10 text-left"
               >
                 {t.portfolio}
-              </a>
-              <a 
-                href="#work-with-us" 
-                className="text-[#c5d4e6] hover:text-[#e8eef5] transition-colors font-medium text-sm px-3 py-2 rounded-full hover:bg-[#126AF9]/10"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                {t.workWithUs}
-              </a>
+              </button>
+              <WorkWithUsDialog currentLang={currentLang}>
+                <button 
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="text-[#c5d4e6] hover:text-[#e8eef5] transition-colors font-medium text-sm px-3 py-2 rounded-full hover:bg-[#126AF9]/10 text-left w-full"
+                >
+                  {t.workWithUs}
+                </button>
+              </WorkWithUsDialog>
               <Button
                 variant="outline"
                 size="sm"
-                className="w-fit border-[#8b9bb3] text-[#c5d4e6] hover:bg-[#8b9bb3] hover:text-[#0a0a0a] bg-transparent px-4 py-1.5 text-sm rounded-full"
+                className="w-fit border-[#8b9bb3] text-[#c5d4e6] hover:bg-[#8b9bb3] hover:text-white bg-transparent px-4 py-1.5 text-sm rounded-full"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {t.contact}
