@@ -1,7 +1,8 @@
 "use client"
 
 import Image from "next/image"
-import { Mail, Phone, MapPin, Linkedin, Github, Twitter } from "lucide-react"
+import { Mail, Phone, MapPin, Linkedin, Instagram } from "lucide-react"
+
 
 interface FooterProps {
   currentLang: "pt" | "en"
@@ -28,9 +29,9 @@ export function Footer({ currentLang }: FooterProps) {
   return (
     <footer className="bg-[#111111] text-white">
       <div className="container mx-auto px-4 py-16">
-        <div className="grid md:grid-cols-4 gap-8">
+        <div className="flex flex-col md:flex-row gap-6">
           {/* Logo and Description */}
-          <div className="md:col-span-1">
+          <div className="md:w-1/3">
             <Image
               src="/images/icon-white.png"
               alt="Gargantua Technologies"
@@ -38,64 +39,73 @@ export function Footer({ currentLang }: FooterProps) {
               height={40}
               className="h-8 w-auto mb-4"
             />
-            <p className="text-[#878EA0] leading-relaxed mb-6">{t.tagline}</p>
+            <p className="text-[#878EA0] leading-relaxed mb-4">{t.tagline}</p>
+            <div className="flex items-center gap-2 mb-6">
+              <Mail className="h-3 w-3 text-[#20BCED] flex-shrink-0" />
+              <a 
+                href="mailto:contact@gargantuatechnologies.com"
+                className="text-[#20BCED] hover:text-[#126AF9] font-medium transition-colors text-sm"
+              >
+                contact@gargantuatechnologies.com
+              </a>
+            </div>
             <div className="flex space-x-4">
-              <a href="#" className="text-[#878EA0] hover:text-[#20BCED] transition-colors">
+              <a href="https://www.linkedin.com/company/gargantua-tech/" target="_blank" rel="noopener noreferrer" className="text-[#878EA0] hover:text-[#20BCED] transition-colors">
                 <Linkedin className="h-5 w-5" />
               </a>
-              <a href="#" className="text-[#878EA0] hover:text-[#20BCED] transition-colors">
-                <Github className="h-5 w-5" />
-              </a>
-              <a href="#" className="text-[#878EA0] hover:text-[#20BCED] transition-colors">
-                <Twitter className="h-5 w-5" />
+              <a href="https://www.instagram.com/gargantuatechnologies" target="_blank" rel="noopener noreferrer" className="text-[#878EA0] hover:text-[#20BCED] transition-colors">
+                <Instagram className="h-5 w-5" />
               </a>
             </div>
           </div>
 
-          {/* United States */}
-          <div>
-            <h3 className="text-lg font-bold mb-4 text-white">United States</h3>
-            <ul className="space-y-2 text-[#878EA0]">
-              <li className="font-semibold">Ligiga LLC - 802754373</li>
-              <li className="flex items-center gap-2">
-                <Phone className="h-4 w-4 text-[#20BCED]" />
-                <span>+1 (407) 680-7191</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <MapPin className="h-4 w-4 text-[#20BCED] mt-1" />
-                <span>3 Parklane Blvd, Suite 1005W<br />Dearborn, MI</span>
-              </li>
-            </ul>
-          </div>
+          {/* Addresses - Right Side */}
+          <div className="md:w-2/3 flex flex-col md:flex-row gap-1">
+            {/* United States */}
+            <div className="flex-1">
+              <h3 className="text-sm font-bold mb-2 text-white">United States</h3>
+              <ul className="space-y-1 text-[#878EA0]">
+                <li className="font-semibold text-xs">Ligiga LLC - 802754373</li>
+                <li className="flex items-center gap-1.5">
+                  <Phone className="h-3 w-3 text-[#20BCED]" />
+                  <span className="text-xs">+1 (407) 680-7191</span>
+                </li>
+                <li className="flex items-start gap-1.5">
+                  <MapPin className="h-3 w-3 text-[#20BCED] mt-0.5" />
+                  <span className="text-xs">3 Parklane Blvd, Suite 1005W<br />Dearborn, MI</span>
+                </li>
+              </ul>
+            </div>
 
-          {/* Brazil */}
-          <div>
-            <h3 className="text-lg font-bold mb-4 text-white">Brazil</h3>
-            <ul className="space-y-2 text-[#878EA0]">
-              <li className="font-semibold">Gargantua Technologies LTDA</li>
-              <li className="text-sm">57.873.343/0001-88</li>
-              <li className="flex items-center gap-2">
-                <Phone className="h-4 w-4 text-[#20BCED]" />
-                <span>+55 (92) 98165-9541</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <MapPin className="h-4 w-4 text-[#20BCED] mt-1" />
-                <span>R, Pastor Oswald Hesse, 730<br />Blumenau - SC (89015-100)</span>
-              </li>
-            </ul>
-          </div>
+            {/* Brazil */}
+            <div className="flex-1">
+              <h3 className="text-sm font-bold mb-2 text-white">Brazil</h3>
+              <ul className="space-y-1 text-[#878EA0]">
+                <li className="font-semibold text-xs">Gargantua Technologies LTDA</li>
+                <li className="text-xs">57.873.343/0001-88</li>
+                <li className="flex items-center gap-1.5">
+                  <Phone className="h-3 w-3 text-[#20BCED]" />
+                  <span className="text-xs">+55 (92) 98165-9541</span>
+                </li>
+                <li className="flex items-start gap-1.5">
+                  <MapPin className="h-3 w-3 text-[#20BCED] mt-0.5" />
+                  <span className="text-xs">R, Pastor Oswald Hesse, 730<br />Blumenau - SC (89015-100)</span>
+                </li>
+              </ul>
+            </div>
 
-          {/* United Arab Emirates */}
-          <div>
-            <h3 className="text-lg font-bold mb-4 text-white">United Arab Emirates</h3>
-            <ul className="space-y-2 text-[#878EA0]">
-              <li className="font-semibold">Ligiga LLC - 2111711.01</li>
-              <li className="text-sm">Sharjah Media City (Shams)</li>
-              <li className="flex items-center gap-2">
-                <Phone className="h-4 w-4 text-[#20BCED]" />
-                <span>+971 58 253 3528</span>
-              </li>
-            </ul>
+            {/* United Arab Emirates */}
+            <div className="flex-1">
+              <h3 className="text-sm font-bold mb-2 text-white">United Arab Emirates</h3>
+              <ul className="space-y-1 text-[#878EA0]">
+                <li className="font-semibold text-xs">Ligiga LLC - 2111711.01</li>
+                <li className="text-xs">Sharjah Media City (Shams)</li>
+                <li className="flex items-center gap-1.5">
+                  <Phone className="h-3 w-3 text-[#20BCED]" />
+                  <span className="text-xs">+971 58 253 3528</span>
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
 

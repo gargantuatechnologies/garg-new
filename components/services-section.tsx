@@ -3,7 +3,7 @@
 import React, { useState } from 'react'
 import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { CreditCard, Smartphone, Database, BarChart3, Shield, Cog, ChevronRight, Play } from "lucide-react"
+import { CreditCard, Smartphone, Database, BarChart3, Shield, Cog, ChevronRight, Play, Brain, Coins } from "lucide-react"
 
 interface ServicesSectionProps {
   currentLang: "pt" | "en"
@@ -45,17 +45,17 @@ const translations = {
         color: "from-[#126AF9] to-[#20BCED]"
       },
       {
-        icon: BarChart3,
-        title: "Business Intelligence",
-        description: "Dashboards inteligentes e análises avançadas para tomada de decisões baseada em dados.",
-        features: ["Dashboards Interativos", "Análise Preditiva", "Relatórios Automatizados"],
+        icon: Brain,
+        title: "Inteligência Artificial",
+        description: "Soluções de IA avançada para automação, análise de dados e tomada de decisões inteligentes.",
+        features: ["Machine Learning", "Processamento de Linguagem", "Visão Computacional"],
         color: "from-[#20BCED] to-[#B6E1F2]"
       },
       {
-        icon: Shield,
-        title: "Auditoria Imersiva",
-        description: "Metodologia única de auditoria que mergulha profundamente nos processos da sua empresa.",
-        features: ["Análise Completa", "Otimização de Processos", "Compliance Garantido"],
+        icon: Coins,
+        title: "Web3 e Tokenização",
+        description: "Desenvolvimento de soluções blockchain, smart contracts e sistemas de tokenização para o futuro digital.",
+        features: ["Smart Contracts", "NFTs e Tokens", "DeFi Solutions"],
         color: "from-[#B6E1F2] to-[#126AF9]"
       },
     ],
@@ -95,17 +95,17 @@ const translations = {
         color: "from-[#126AF9] to-[#20BCED]"
       },
       {
-        icon: BarChart3,
-        title: "Business Intelligence",
-        description: "Smart dashboards and advanced analytics for data-driven decision making.",
-        features: ["Interactive Dashboards", "Predictive Analysis", "Automated Reports"],
+        icon: Brain,
+        title: "Artificial Intelligence",
+        description: "Advanced AI solutions for automation, data analysis and intelligent decision making.",
+        features: ["Machine Learning", "Natural Language Processing", "Computer Vision"],
         color: "from-[#20BCED] to-[#B6E1F2]"
       },
       {
-        icon: Shield,
-        title: "Immersive Audit",
-        description: "Unique audit methodology that dives deep into your company's processes.",
-        features: ["Complete Analysis", "Process Optimization", "Guaranteed Compliance"],
+        icon: Coins,
+        title: "Web3 and Tokenization",
+        description: "Development of blockchain solutions, smart contracts and tokenization systems for the digital future.",
+        features: ["Smart Contracts", "NFTs and Tokens", "DeFi Solutions"],
         color: "from-[#B6E1F2] to-[#126AF9]"
       },
     ],

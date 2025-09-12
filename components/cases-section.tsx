@@ -39,7 +39,12 @@ const translations = {
         challenge: "Sistema engessado, dificuldade de escalar, fraudes por múltiplas contas bancárias e conciliação manual.",
         solution: "Construímos um sistema sob medida utilizando IA para cobranças e BaaS próprio, automatizando transações e aumentando a visibilidade de métricas.",
         category: "Fintech",
-        image: "/placeholder.jpg",
+        images: [
+          "/images/midas-case/dcredito-operators-ranking.png",
+          "/images/midas-case/MIDAS PHONES 1.png",
+          "/images/midas-case/Screenshot_1.png",
+          "/images/midas-case/Screenshot_16.png"
+        ],
         stats: {}
       }
     ]
@@ -73,7 +78,12 @@ const translations = {
         challenge: "Rigid system, scaling difficulties, fraud from multiple bank accounts and manual reconciliation.",
         solution: "We built a tailored system using AI for collections and proprietary BaaS, automating transactions and increasing metrics visibility.",
         category: "Fintech",
-        image: "/placeholder.jpg",
+        images: [
+          "/images/midas-case/dcredito-operators-ranking.png",
+          "/images/midas-case/MIDAS PHONES 1.png",
+          "/images/midas-case/Screenshot_1.png",
+          "/images/midas-case/Screenshot_16.png"
+        ],
         stats: {}
       }
     ]

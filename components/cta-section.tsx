@@ -2,6 +2,7 @@
 
 import { Button } from "@/components/ui/button"
 import { ArrowRight } from "lucide-react"
+import { ScheduleMeetingDialog } from "@/components/schedule-meeting-dialog"
 
 interface CTASectionProps {
   currentLang: "pt" | "en"
@@ -13,14 +14,12 @@ const translations = {
     subtitle: "Vamos conversar sobre como podemos transformar seu negócio",
     description: "Nossa equipe está pronta para mergulhar nos seus processos e criar soluções que transcendem o comum.",
     ctaPrimary: "Iniciar Projeto",
-    ctaSecondary: "Agendar Reunião",
   },
   en: {
     title: "Ready to Reach Singularity?",
     subtitle: "Let's talk about how we can transform your business",
     description: "Our team is ready to dive into your processes and create solutions that transcend the ordinary.",
     ctaPrimary: "Start Project",
-    ctaSecondary: "Schedule Meeting",
   },
 }
 
@@ -35,22 +34,17 @@ export function CTASection({ currentLang }: CTASectionProps) {
           <p className="text-2xl text-[#B6E1F2] mb-8">{t.subtitle}</p>
           <p className="text-lg text-white/80 mb-12 max-w-2xl mx-auto leading-relaxed">{t.description}</p>
 
-          {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-16">
-            <Button
-              size="lg"
-              className="bg-[#126AF9] hover:bg-[#052699] text-white px-8 py-4 text-lg font-semibold hover-lift group"
-            >
-              {t.ctaPrimary}
-              <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
-            </Button>
-            <Button
-              variant="outline"
-              size="lg"
-              className="border-[#20BCED] text-[#20BCED] hover:bg-[#20BCED] hover:text-white px-8 py-4 text-lg font-semibold hover-lift bg-transparent"
-            >
-              {t.ctaSecondary}
-            </Button>
+          {/* CTA Button */}
+          <div className="flex justify-center items-center mb-16">
+            <ScheduleMeetingDialog currentLang={currentLang}>
+              <Button
+                size="lg"
+                className="bg-[#126AF9] hover:bg-[#052699] text-white px-8 py-4 text-lg font-semibold hover-lift group"
+              >
+                {t.ctaPrimary}
+                <ArrowRight className="ml-2 h-5 w-5 group-hover:translate-x-1 transition-transform" />
+              </Button>
+            </ScheduleMeetingDialog>
           </div>
 
         </div>

@@ -3,6 +3,7 @@
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { WorkWithUsDialog } from "@/components/work-with-us-dialog"
+import { ContactDialog } from "@/components/contact-dialog"
 import { Globe, Menu, X } from "lucide-react"
 import Image from "next/image"
 
@@ -88,6 +89,7 @@ export function Header({ currentLang, onLanguageChange }: HeaderProps) {
                 {t.workWithUs}
               </button>
             </WorkWithUsDialog>
+          <ContactDialog currentLang={currentLang}>
             <Button
               variant="outline"
               size="sm"
@@ -95,6 +97,7 @@ export function Header({ currentLang, onLanguageChange }: HeaderProps) {
             >
               {t.contact}
             </Button>
+          </ContactDialog>
           </nav>
 
           {/* Idioma e Menu mobile */}
@@ -159,14 +162,16 @@ export function Header({ currentLang, onLanguageChange }: HeaderProps) {
                   {t.workWithUs}
                 </button>
               </WorkWithUsDialog>
-              <Button
-                variant="outline"
-                size="sm"
-                className="w-fit border-[#8b9bb3] text-[#c5d4e6] hover:bg-[#8b9bb3] hover:text-white bg-transparent px-4 py-1.5 text-sm rounded-full"
-                onClick={() => setIsMobileMenuOpen(false)}
-              >
-                {t.contact}
-              </Button>
+              <ContactDialog currentLang={currentLang}>
+                <Button
+                  variant="outline"
+                  size="sm"
+                  className="w-fit border-[#8b9bb3] text-[#c5d4e6] hover:bg-[#8b9bb3] hover:text-white bg-transparent px-4 py-1.5 text-sm rounded-full"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  {t.contact}
+                </Button>
+              </ContactDialog>
             </nav>
           </div>
         )}
