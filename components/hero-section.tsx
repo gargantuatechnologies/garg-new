@@ -151,9 +151,9 @@ export function HeroSection({ currentLang }: HeroSectionProps) {
 
       <canvas ref={canvasRef} className="absolute inset-0 pointer-events-none opacity-40" />
 
-      <div className="relative z-10 container mx-auto px-4 lg:px-8">
+      <div className="relative z-10 container mx-auto px-6 lg:px-12 xl:px-16">
         <div className="min-h-screen flex items-center">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-24 items-center w-full">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center w-full max-w-7xl mx-auto">
             {/* Left column - Content */}
             <div className="space-y-8 lg:space-y-12 text-center lg:text-left">
               <div className="relative">
@@ -219,7 +219,7 @@ export function HeroSection({ currentLang }: HeroSectionProps) {
             </div>
 
             {/* Right column - Logo */}
-            <div className="flex justify-center lg:justify-end mt-12 lg:mt-0">
+            <div className="flex justify-center lg:justify-center mt-12 lg:mt-0">
               <div className="relative animate-magnetic-float">
                 <Image
                   src="/images/icon-white.png"
