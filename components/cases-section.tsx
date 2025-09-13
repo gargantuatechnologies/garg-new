@@ -88,13 +88,14 @@ const translations = {
 };
 
 // Componente para o Card de Case no Carrossel
-const CaseCard = ({ case: caseItem, onPrev, onNext, onSetCase, currentCase, totalCases }: { 
+const CaseCard = ({ case: caseItem, onPrev, onNext, onSetCase, currentCase, totalCases, currentLang }: { 
   case: any; 
   onPrev: () => void; 
   onNext: () => void; 
   onSetCase: (index: number) => void;
   currentCase: number; 
   totalCases: number; 
+  currentLang: 'pt' | 'en';
 }) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   
@@ -218,7 +219,8 @@ const CaseCard = ({ case: caseItem, onPrev, onNext, onSetCase, currentCase, tota
       </div>
 
       {/* Navigation Controls */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex items-center space-x-4">
+      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center space-y-4">
+        <div className="flex items-center space-x-4">
           {/* Previous Button */}
           <Button
             onClick={(e) => {
@@ -261,6 +263,18 @@ const CaseCard = ({ case: caseItem, onPrev, onNext, onSetCase, currentCase, tota
             <ChevronRight className="h-5 w-5" />
           </Button>
         </div>
+
+        {/* Ver Portfolio Button */}
+        <Button
+          onClick={() => window.location.href = '/portfolio'}
+          className="group relative glass-floating-enhanced border-2 border-[#8b9bb3]/40 hover:border-[#c5d4e6]/60 text-[#c5d4e6] hover:text-[#e8eef5] font-light px-6 py-3 text-base rounded-2xl backdrop-blur-xl hover:backdrop-blur-2xl transition-all duration-500 transform hover:scale-105 hover:-translate-y-1 shadow-lg shadow-black/20 hover:shadow-xl hover:shadow-black/30 overflow-hidden"
+        >
+          <div className="absolute inset-0 bg-gradient-to-r from-[#126AF9]/5 to-[#20BCED]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+          <span className="relative z-10">
+            {currentLang === 'pt' ? 'Ver Portfolio' : 'View Portfolio'}
+          </span>
+        </Button>
+      </div>
     </div>
   </div>
   );
@@ -308,6 +322,7 @@ export function CasesSection({ currentLang }: CasesSectionProps) {
           onSetCase={setCurrentCase}
           currentCase={currentCase}
           totalCases={t.cases.length}
+          currentLang={currentLang}
         />
       </div>
 
