@@ -9,7 +9,7 @@ import Image from "next/image"
 interface HeaderProps {
   currentLang: "pt" | "en"
   onLanguageChange: (lang: "pt" | "en") => void
-  currentPage?: "home" | "portfolio" | "project"
+  currentPage?: "home" | "about" | "portfolio" | "project"
 }
 
 const translations = {
@@ -78,8 +78,12 @@ export function Header({ currentLang, onLanguageChange, currentPage = "home" }: 
           {/* Navegação desktop */}
           <nav className="hidden lg:flex items-center space-x-6">
             <button 
-              onClick={() => scrollToSection('concept')}
-              className="text-[#c5d4e6] hover:text-[#e8eef5] transition-colors font-medium text-sm px-4 py-1.5 rounded-full hover:bg-[#126AF9]/10"
+              onClick={() => window.location.href = '/about'}
+              className={`transition-colors font-medium text-sm px-4 py-1.5 rounded-full hover:bg-[#126AF9]/10 ${
+                currentPage === "about"
+                  ? "text-[#20BCED] bg-[#20BCED]/10 border border-[#20BCED]/30" 
+                  : "text-[#c5d4e6] hover:text-[#e8eef5]"
+              }`}
             >
               {t.about}
             </button>
@@ -156,8 +160,12 @@ export function Header({ currentLang, onLanguageChange, currentPage = "home" }: 
           <div className="absolute top-full left-0 right-0 mt-4 glass-floating rounded-2xl p-4 border border-[#4a5568]/20">
             <nav className="flex flex-col space-y-3">
               <button 
-                onClick={() => scrollToSection('concept')}
-                className="text-[#c5d4e6] hover:text-[#e8eef5] transition-colors font-medium text-sm px-3 py-2 rounded-full hover:bg-[#126AF9]/10 text-left"
+                onClick={() => window.location.href = '/about'}
+                className={`transition-colors font-medium text-sm px-3 py-2 rounded-full hover:bg-[#126AF9]/10 text-left ${
+                  currentPage === "about"
+                    ? "text-[#20BCED] bg-[#20BCED]/10 border border-[#20BCED]/30" 
+                    : "text-[#c5d4e6] hover:text-[#e8eef5]"
+                }`}
               >
                 {t.about}
               </button>

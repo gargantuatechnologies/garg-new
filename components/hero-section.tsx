@@ -170,7 +170,7 @@ export function HeroSection({ currentLang }: HeroSectionProps) {
                 {/* Botão Principal - Descobrir Soluções */}
                 <Button
                   size="lg"
-                  className="group text-white font-bold px-8 lg:px-12 py-4 lg:py-5 text-base lg:text-lg rounded-2xl transition-all duration-300 relative z-10 overflow-hidden hover:scale-[1.02] hover:-translate-y-1 active:scale-[0.98] active:translate-y-0"
+                  className="group text-white font-light px-6 lg:px-8 py-4 lg:py-5 text-base lg:text-lg rounded-2xl transition-all duration-300 relative z-10 overflow-hidden hover:scale-[1.02] hover:-translate-y-1 active:scale-[0.98] active:translate-y-0"
                   style={{
                     background: 'linear-gradient(145deg, #126AF9 0%, #20BCED 100%)',
                     boxShadow: `
@@ -202,7 +202,13 @@ export function HeroSection({ currentLang }: HeroSectionProps) {
                   {/* Efeito de brilho sutil */}
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 transform translate-x-[-100%] group-hover:translate-x-[100%]"></div>
                   
-                  <ArrowRight className="mr-3 h-5 lg:h-6 w-5 lg:w-6 group-hover:translate-x-1 group-hover:scale-105 transition-all duration-300 relative z-10" />
+                  <Image
+                    src="/images/icon-white.png"
+                    alt="Gargantua"
+                    width={20}
+                    height={20}
+                    className="mr-3 h-5 lg:h-6 w-5 lg:w-6 group-hover:translate-x-1 group-hover:scale-105 transition-all duration-300 relative z-10"
+                  />
                   <span className="relative z-10">{t.cta}</span>
                 </Button>
 
@@ -210,7 +216,7 @@ export function HeroSection({ currentLang }: HeroSectionProps) {
                 <Button
                   variant="outline"
                   size="lg"
-                  className="group relative glass-floating-enhanced border-2 border-[#8b9bb3]/40 hover:border-[#c5d4e6]/60 text-[#c5d4e6] hover:text-[#e8eef5] font-semibold px-8 lg:px-12 py-4 lg:py-5 text-base lg:text-lg rounded-2xl backdrop-blur-xl hover:backdrop-blur-2xl transition-all duration-500 transform hover:scale-105 hover:-translate-y-1 shadow-lg shadow-black/20 hover:shadow-xl hover:shadow-black/30 overflow-hidden"
+                  className="group relative glass-floating-enhanced border-2 border-[#8b9bb3]/40 hover:border-[#c5d4e6]/60 text-[#c5d4e6] hover:text-[#e8eef5] font-light px-6 lg:px-8 py-4 lg:py-5 text-base lg:text-lg rounded-2xl backdrop-blur-xl hover:backdrop-blur-2xl transition-all duration-500 transform hover:scale-105 hover:-translate-y-1 shadow-lg shadow-black/20 hover:shadow-xl hover:shadow-black/30 overflow-hidden"
                 >
                   <div className="absolute inset-0 bg-gradient-to-r from-[#126AF9]/5 to-[#20BCED]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   <span className="relative z-10">{t.ctaSecondary}</span>

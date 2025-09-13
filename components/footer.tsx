@@ -113,7 +113,7 @@ export function Footer({ currentLang }: FooterProps) {
         <div className="border-t border-[#333333] mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
           <p className="text-[#878EA0] text-sm">© 2025 Gargantua Technologies. {t.rights}</p>
           <div className="flex space-x-6 mt-4 md:mt-0">
-            <a href="#" className="text-[#878EA0] hover:text-[#20BCED] text-sm transition-colors">
+            <a href="/privacy" className="text-[#878EA0] hover:text-[#20BCED] text-sm transition-colors">
               {t.privacy}
             </a>
             <a href="#" className="text-[#878EA0] hover:text-[#20BCED] text-sm transition-colors">
