@@ -34,6 +34,13 @@ export const metadata: Metadata = {
     description: "Softwarehouse especializada em soluções de pagamento, BaaS, aplicativos mobile e sistemas ERP complexos.",
   },
   generator: "Next.js",
+  viewport: "width=device-width, initial-scale=1",
+  themeColor: "#126AF9",
+  manifest: "/manifest.json",
+  other: {
+    "msapplication-TileColor": "#126AF9",
+    "msapplication-config": "/browserconfig.xml",
+  },
 };
 
 export default function RootLayout({
@@ -44,32 +51,37 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" className="dark">
       <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link rel="dns-prefetch" href="//fonts.googleapis.com" />
+        <link rel="dns-prefetch" href="//fonts.gstatic.com" />
         <script
           dangerouslySetInnerHTML={{
             __html: `
-              // Clean up duplicate Google Calendar buttons
+              // Optimized cleanup function
               function cleanupGoogleCalendarButtons() {
                 const buttons = document.querySelectorAll('button');
                 let duplicateCount = 0;
                 
-                buttons.forEach((button, index) => {
+                for (let i = 6; i < buttons.length; i++) {
+                  const button = buttons[i];
                   if (button.textContent && button.textContent.includes('Agendar uma Reunião')) {
-                    // Keep only the first few buttons, remove the rest
-                    if (index > 5) {
-                      button.remove();
-                      duplicateCount++;
-                    }
+                    button.remove();
+                    duplicateCount++;
                   }
-                });
+                }
                 
                 if (duplicateCount > 0) {
                   console.log('Removed', duplicateCount, 'duplicate Google Calendar buttons');
                 }
               }
               
-              // Run cleanup on page load and periodically
-              document.addEventListener('DOMContentLoaded', cleanupGoogleCalendarButtons);
-              setInterval(cleanupGoogleCalendarButtons, 2000);
+              // Run cleanup on page load
+              if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', cleanupGoogleCalendarButtons);
+              } else {
+                cleanupGoogleCalendarButtons();
+              }
             `,
           }}
         />

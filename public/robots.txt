@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://gargantua.tech/sitemap.xml
+
+# Performance optimizations
+Crawl-delay: 1

@@ -1,8 +1,7 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useRef, useCallback } from "react"
 import { Button } from "@/components/ui/button"
-import { ArrowRight } from "lucide-react"
 import Image from "next/image"
 
 interface HeroSectionProps {
@@ -36,36 +35,29 @@ export function HeroSection({ currentLang }: HeroSectionProps) {
     const ctx = canvas.getContext("2d")
     if (!ctx) return
 
-    canvas.width = window.innerWidth
-    canvas.height = window.innerHeight
-
-    const waves: Array<{
-      x: number
-      y: number
-      amplitude: number
-      frequency: number
-      phase: number
-      speed: number
-      opacity: number
-      direction: number
-    }> = []
-
-    for (let i = 0; i < 8; i++) {
-      waves.push({
-        x: 0,
-        y: canvas.height * (0.2 + i * 0.12),
-        amplitude: 25 + Math.random() * 40,
-        frequency: 0.004 + Math.random() * 0.003,
-        phase: Math.random() * Math.PI * 2,
-        speed: 0.001 + Math.random() * 0.0005,
-        opacity: 0.02 + Math.random() * 0.06,
-        direction: Math.random() > 0.5 ? 1 : -1,
-      })
+    // Set initial canvas size
+    const resizeCanvas = () => {
+      canvas.width = window.innerWidth
+      canvas.height = window.innerHeight
     }
+    
+    resizeCanvas()
 
+    // Pre-calculate wave properties for better performance
+    const waves = Array.from({ length: 6 }, (_, i) => ({
+      y: canvas.height * (0.2 + i * 0.15),
+      amplitude: 20 + i * 5,
+      frequency: 0.003 + i * 0.0005,
+      phase: i * 0.5,
+      speed: 0.5 + i * 0.1,
+      opacity: 0.03 + i * 0.01,
+      direction: i % 2 === 0 ? 1 : -1,
+    }))
+
+    let animationId: number
     let time = 0
 
-    function animate() {
+    const animate = () => {
       if (!ctx || !canvas) return
 
       ctx.clearRect(0, 0, canvas.width, canvas.height)
@@ -75,32 +67,26 @@ export function HeroSection({ currentLang }: HeroSectionProps) {
         ctx.beginPath()
         ctx.moveTo(0, wave.y)
 
-        for (let x = 0; x <= canvas.width; x += 4) {
-          const y =
-            wave.y +
-            Math.sin(x * wave.frequency + wave.phase + time * wave.speed * wave.direction) * wave.amplitude +
-            Math.sin(x * wave.frequency * 0.7 + time * wave.speed * 2) * wave.amplitude * 0.4 +
-            Math.cos(x * wave.frequency * 0.3 + time * wave.speed * 0.8) * wave.amplitude * 0.2
+        // Reduced step size for better performance
+        for (let x = 0; x <= canvas.width; x += 6) {
+          const y = wave.y + wave.amplitude * Math.sin(x * wave.frequency + wave.phase + time * wave.speed * wave.direction)
           ctx.lineTo(x, y)
         }
 
+        // Simplified gradient for better performance
         const gradient = ctx.createLinearGradient(0, 0, canvas.width, canvas.height)
-        if (index % 4 === 0) {
+        if (index % 3 === 0) {
           gradient.addColorStop(0, `rgba(32, 188, 237, ${wave.opacity * 0.5})`)
           gradient.addColorStop(0.5, `rgba(18, 106, 249, ${wave.opacity * 0.7})`)
           gradient.addColorStop(1, `rgba(5, 38, 153, ${wave.opacity * 0.4})`)
-        } else if (index % 4 === 1) {
-          gradient.addColorStop(0, `rgba(197, 212, 230, ${wave.opacity * 0.3})`)
-          gradient.addColorStop(0.5, `rgba(139, 155, 179, ${wave.opacity * 0.5})`)
-          gradient.addColorStop(1, `rgba(74, 85, 104, ${wave.opacity * 0.3})`)
-        } else if (index % 4 === 2) {
+        } else if (index % 3 === 1) {
           gradient.addColorStop(0, `rgba(182, 225, 242, ${wave.opacity * 0.4})`)
           gradient.addColorStop(0.5, `rgba(32, 188, 237, ${wave.opacity * 0.6})`)
           gradient.addColorStop(1, `rgba(18, 106, 249, ${wave.opacity * 0.3})`)
         } else {
-          gradient.addColorStop(0, `rgba(232, 238, 245, ${wave.opacity * 0.2})`)
-          gradient.addColorStop(0.5, `rgba(197, 212, 230, ${wave.opacity * 0.4})`)
-          gradient.addColorStop(1, `rgba(139, 155, 179, ${wave.opacity * 0.2})`)
+          gradient.addColorStop(0, `rgba(197, 212, 230, ${wave.opacity * 0.3})`)
+          gradient.addColorStop(0.5, `rgba(139, 155, 179, ${wave.opacity * 0.5})`)
+          gradient.addColorStop(1, `rgba(74, 85, 104, ${wave.opacity * 0.3})`)
         }
 
         ctx.lineTo(canvas.width, canvas.height)
@@ -110,20 +96,22 @@ export function HeroSection({ currentLang }: HeroSectionProps) {
         ctx.fill()
       })
 
-      requestAnimationFrame(animate)
+      animationId = requestAnimationFrame(animate)
     }
 
     animate()
 
     const handleResize = () => {
-      canvas.width = window.innerWidth
-      canvas.height = window.innerHeight
+      resizeCanvas()
     }
 
     window.addEventListener("resize", handleResize)
 
     return () => {
       window.removeEventListener("resize", handleResize)
+      if (animationId) {
+        cancelAnimationFrame(animationId)
+      }
     }
   }, [])
 
@@ -198,6 +186,12 @@ export function HeroSection({ currentLang }: HeroSectionProps) {
                       inset 0 -1px 0 rgba(0, 0, 0, 0.1)
                     `;
                   }}
+                  onClick={() => {
+                    const nextSection = document.getElementById('concept');
+                    if (nextSection) {
+                      nextSection.scrollIntoView({ behavior: 'smooth' });
+                    }
+                  }}
                 >
                   {/* Efeito de brilho sutil */}
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 transform translate-x-[-100%] group-hover:translate-x-[100%]"></div>
@@ -207,6 +201,7 @@ export function HeroSection({ currentLang }: HeroSectionProps) {
                     alt="Gargantua"
                     width={20}
                     height={20}
+                    priority
                     className="mr-3 h-5 lg:h-6 w-5 lg:w-6 group-hover:translate-x-1 group-hover:scale-105 transition-all duration-300 relative z-10"
                   />
                   <span className="relative z-10">{t.cta}</span>
@@ -217,6 +212,7 @@ export function HeroSection({ currentLang }: HeroSectionProps) {
                   variant="outline"
                   size="lg"
                   className="group relative glass-floating-enhanced border-2 border-[#8b9bb3]/40 hover:border-[#c5d4e6]/60 text-[#c5d4e6] hover:text-[#e8eef5] font-light px-6 lg:px-8 py-4 lg:py-5 text-base lg:text-lg rounded-2xl backdrop-blur-xl hover:backdrop-blur-2xl transition-all duration-500 transform hover:scale-105 hover:-translate-y-1 shadow-lg shadow-black/20 hover:shadow-xl hover:shadow-black/30 overflow-hidden"
+                  onClick={() => window.location.href = '/portfolio'}
                 >
                   <div className="absolute inset-0 bg-gradient-to-r from-[#126AF9]/5 to-[#20BCED]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   <span className="relative z-10">{t.ctaSecondary}</span>
@@ -232,6 +228,7 @@ export function HeroSection({ currentLang }: HeroSectionProps) {
                   alt="Gargantua Icon"
                   width={250}
                   height={250}
+                  priority
                   className="lg:w-[350px] lg:h-[350px] xl:w-[400px] xl:h-[400px] relative z-10 animate-eye-catching-spin drop-shadow-2xl"
                 />
 

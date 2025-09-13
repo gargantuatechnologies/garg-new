@@ -1,7 +1,7 @@
 "use client"
 
 import { motion, useScroll, useTransform } from "framer-motion"
-import { ArrowRight, Sparkles, Zap, Shield, Star, Rocket, Brain, Lightbulb, Heart } from "lucide-react"
+import { ArrowRight, Shield, Star, Rocket, Brain, Lightbulb, Heart } from "lucide-react"
 import { useRef } from "react"
 
 interface AboutMissionProps {
@@ -62,7 +62,7 @@ export function AboutMission({ currentLang }: AboutMissionProps) {
       bgColor: "bg-gradient-to-br from-[#126AF9]/10 to-[#20BCED]/5",
       position: "left",
       image: "/images/mission-bg.jpg",
-      floatingIcons: [Sparkles, Zap, Star],
+      floatingIcons: [Star, Star, Star],
       accentColor: "#126AF9"
     },
     {
@@ -84,7 +84,7 @@ export function AboutMission({ currentLang }: AboutMissionProps) {
       bgColor: "bg-gradient-to-br from-[#B6E1F2]/10 to-[#126AF9]/5",
       position: "right",
       image: "/images/values-bg.jpg",
-      floatingIcons: [Shield, Sparkles, Zap],
+      floatingIcons: [Shield, Star, Star],
       accentColor: "#B6E1F2"
     }
   ]

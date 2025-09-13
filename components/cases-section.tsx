@@ -117,47 +117,47 @@ const CaseCard = ({ case: caseItem, onPrev, onNext, onSetCase, currentCase, tota
   };
 
   return (
-  <div className="relative w-full h-[600px]">
+  <div className="relative w-full h-[800px] sm:h-[750px] lg:h-[600px]">
     {/* Content */}
-    <div className="absolute inset-0 flex items-center px-16 lg:px-24">
-      <div className="w-full max-w-7xl mx-auto grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
+    <div className="absolute inset-0 flex flex-col lg:flex-row items-center px-4 sm:px-8 lg:px-24 py-24 sm:py-8 lg:py-0">
+      <div className="w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-12 items-center">
         {/* Left Side - Content */}
-        <div className="space-y-4">
+        <div className="space-y-4 lg:space-y-4 order-2 lg:order-1">
           {/* Category & Title */}
-          <div>
-            <span className="inline-block px-4 py-2 text-sm font-semibold text-[#20BCED] bg-[#20BCED]/20 rounded-full mb-4">
+          <div className="text-center lg:text-left">
+            <span className="inline-block px-3 py-1.5 lg:px-4 lg:py-2 text-xs lg:text-sm font-semibold text-[#20BCED] bg-[#20BCED]/20 rounded-full mb-3 lg:mb-4">
               {caseItem.category}
             </span>
-            <h2 className="text-3xl lg:text-4xl font-black text-white mb-2">
+            <h2 className="text-2xl sm:text-3xl lg:text-4xl font-black text-white mb-2">
               {caseItem.title}
             </h2>
-            <h3 className="text-lg lg:text-xl text-[#20BCED] font-semibold">
+            <h3 className="text-base sm:text-lg lg:text-xl text-[#20BCED] font-semibold">
               {caseItem.subtitle}
             </h3>
           </div>
 
           {/* Description */}
-          <p className="text-base text-[#B6E1F2] leading-relaxed">
+          <p className="text-sm sm:text-base text-[#B6E1F2] leading-relaxed text-center lg:text-left">
             {caseItem.description}
           </p>
 
           {/* Challenge & Solution */}
-          <div className="space-y-3">
-            <div>
+          <div className="space-y-3 lg:space-y-3">
+            <div className="bg-black/20 rounded-lg p-3 lg:p-0 lg:bg-transparent">
               <h4 className="text-xs font-semibold text-[#20BCED] mb-1">O DESAFIO:</h4>
-              <p className="text-xs text-[#B6E1F2]">{caseItem.challenge}</p>
+              <p className="text-xs text-[#B6E1F2] leading-relaxed">{caseItem.challenge}</p>
             </div>
-            <div>
+            <div className="bg-black/20 rounded-lg p-3 lg:p-0 lg:bg-transparent">
               <h4 className="text-xs font-semibold text-[#20BCED] mb-1">NOSSA SOLUÇÃO:</h4>
-              <p className="text-xs text-[#B6E1F2]">{caseItem.solution}</p>
+              <p className="text-xs text-[#B6E1F2] leading-relaxed">{caseItem.solution}</p>
             </div>
           </div>
 
         </div>
 
         {/* Right Side - Image Gallery */}
-        <div className="relative">
-          <div className="w-full h-80 rounded-xl overflow-hidden border border-[#126AF9]/30 relative group bg-gradient-to-br from-[#0a0a0a] to-[#1a1a1a]">
+        <div className="relative order-1 lg:order-2">
+          <div className="w-full h-56 sm:h-64 lg:h-80 rounded-xl overflow-hidden border border-[#126AF9]/30 relative group bg-gradient-to-br from-[#0a0a0a] to-[#1a1a1a]">
             <img
               src={caseItem.images ? caseItem.images[currentImageIndex] : caseItem.image}
               alt={caseItem.title}
@@ -219,22 +219,32 @@ const CaseCard = ({ case: caseItem, onPrev, onNext, onSetCase, currentCase, tota
       </div>
 
       {/* Navigation Controls */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex flex-col items-center space-y-4">
-        <div className="flex items-center space-x-4">
-          {/* Previous Button */}
+      <div className="absolute -bottom-20 lg:-bottom-4 left-1/2 transform -translate-x-1/2 flex flex-col items-center space-y-4 lg:space-y-4 px-4 w-full max-w-sm lg:max-w-none">
+        <div className="flex items-center justify-center space-x-3 lg:space-x-4 w-full">
+          {/* Previous Button - Mobile: Arrow only, Desktop: Full button */}
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              onPrev();
+            }}
+            className="lg:hidden w-10 h-10 bg-[#126AF9]/20 hover:bg-[#126AF9]/30 text-[#20BCED] border border-[#126AF9]/30 hover:border-[#20BCED]/50 transition-all duration-300 rounded-full flex items-center justify-center"
+          >
+            <ChevronLeft className="h-5 w-5" />
+          </button>
+          
           <Button
             onClick={(e) => {
               e.stopPropagation();
               onPrev();
             }}
-            className="flex items-center space-x-2 bg-[#126AF9]/20 hover:bg-[#126AF9]/30 text-[#20BCED] border border-[#126AF9]/30 hover:border-[#20BCED]/50 transition-all duration-300"
+            className="hidden lg:flex items-center space-x-2 bg-[#126AF9]/20 hover:bg-[#126AF9]/30 text-[#20BCED] border border-[#126AF9]/30 hover:border-[#20BCED]/50 transition-all duration-300 text-sm px-4 py-2"
           >
             <ChevronLeft className="h-5 w-5" />
             <span>Anterior</span>
           </Button>
 
           {/* Dots Indicator */}
-          <div className="flex space-x-3">
+          <div className="flex space-x-2 lg:space-x-3">
             {Array.from({ length: totalCases }, (_, index) => (
               <button
                 key={index}
@@ -242,7 +252,7 @@ const CaseCard = ({ case: caseItem, onPrev, onNext, onSetCase, currentCase, tota
                   e.stopPropagation();
                   onSetCase(index);
                 }}
-                className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                className={`w-2 h-2 lg:w-3 lg:h-3 rounded-full transition-all duration-300 ${
                   index === currentCase 
                     ? 'bg-[#20BCED] scale-125' 
                     : 'bg-[#126AF9]/40 hover:bg-[#126AF9]/60'
@@ -251,13 +261,23 @@ const CaseCard = ({ case: caseItem, onPrev, onNext, onSetCase, currentCase, tota
             ))}
           </div>
 
-          {/* Next Button */}
+          {/* Next Button - Mobile: Arrow only, Desktop: Full button */}
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              onNext();
+            }}
+            className="lg:hidden w-10 h-10 bg-[#126AF9]/20 hover:bg-[#126AF9]/30 text-[#20BCED] border border-[#126AF9]/30 hover:border-[#20BCED]/50 transition-all duration-300 rounded-full flex items-center justify-center"
+          >
+            <ChevronRight className="h-5 w-5" />
+          </button>
+          
           <Button
             onClick={(e) => {
               e.stopPropagation();
               onNext();
             }}
-            className="flex items-center space-x-2 bg-[#126AF9]/20 hover:bg-[#126AF9]/30 text-[#20BCED] border border-[#126AF9]/30 hover:border-[#20BCED]/50 transition-all duration-300"
+            className="hidden lg:flex items-center space-x-2 bg-[#126AF9]/20 hover:bg-[#126AF9]/30 text-[#20BCED] border border-[#126AF9]/30 hover:border-[#20BCED]/50 transition-all duration-300 text-sm px-4 py-2"
           >
             <span>Próximo</span>
             <ChevronRight className="h-5 w-5" />
@@ -267,7 +287,7 @@ const CaseCard = ({ case: caseItem, onPrev, onNext, onSetCase, currentCase, tota
         {/* Ver Portfolio Button */}
         <Button
           onClick={() => window.location.href = '/portfolio'}
-          className="group relative glass-floating-enhanced border-2 border-[#8b9bb3]/40 hover:border-[#c5d4e6]/60 text-[#c5d4e6] hover:text-[#e8eef5] font-light px-6 py-3 text-base rounded-2xl backdrop-blur-xl hover:backdrop-blur-2xl transition-all duration-500 transform hover:scale-105 hover:-translate-y-1 shadow-lg shadow-black/20 hover:shadow-xl hover:shadow-black/30 overflow-hidden"
+          className="group relative glass-floating-enhanced border-2 border-[#8b9bb3]/40 hover:border-[#c5d4e6]/60 text-[#c5d4e6] hover:text-[#e8eef5] font-light px-6 py-3 lg:px-6 lg:py-3 text-sm lg:text-base rounded-2xl backdrop-blur-xl hover:backdrop-blur-2xl transition-all duration-500 transform hover:scale-105 hover:-translate-y-1 shadow-lg shadow-black/20 hover:shadow-xl hover:shadow-black/30 overflow-hidden w-full max-w-[200px]"
         >
           <div className="absolute inset-0 bg-gradient-to-r from-[#126AF9]/5 to-[#20BCED]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
           <span className="relative z-10">
@@ -304,13 +324,13 @@ export function CasesSection({ currentLang }: CasesSectionProps) {
       </div>
 
       {/* Carousel */}
-      <div className="relative h-[600px]">
+      <div className="relative h-[850px] sm:h-[800px] lg:h-[600px]">
         {/* Header */}
-        <div className="absolute -top-2 left-0 right-0 text-center px-4 z-20">
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-[#126AF9] to-[#20BCED] mb-1">
+        <div className="absolute -top-8 sm:-top-2 left-0 right-0 text-center px-4 z-20">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-[#126AF9] to-[#20BCED] mb-1">
             {t.title}
           </h2>
-          <p className="text-lg text-[#B6E1F2] max-w-2xl mx-auto leading-relaxed">
+          <p className="text-base sm:text-lg text-[#B6E1F2] max-w-2xl mx-auto leading-relaxed">
             {t.subtitle}
           </p>
         </div>

@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Code, Users, BarChart3, Shield, Zap, Target } from "lucide-react"
+import { Code, Users, BarChart3, Shield, Target } from "lucide-react"
 
 interface AboutTeamProps {
   currentLang: "pt" | "en"
@@ -38,7 +38,7 @@ const translations = {
         color: "from-[#126AF9] to-[#1E40AF]"
       },
       {
-        icon: Zap,
+        icon: Code,
         title: "Arquiteto de Soluções",
         description: "Especialistas em arquitetura de sistemas e integração com parceiros estratégicos.",
         color: "from-[#20BCED] to-[#126AF9]"
@@ -87,7 +87,7 @@ const translations = {
         color: "from-[#126AF9] to-[#1E40AF]"
       },
       {
-        icon: Zap,
+        icon: Code,
         title: "Solution Architects",
         description: "Specialists in system architecture and integration with strategic partners.",
         color: "from-[#20BCED] to-[#126AF9]"

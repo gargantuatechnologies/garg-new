@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { Search, Users, Lightbulb, Cog, CheckCircle, ArrowRight, Zap } from "lucide-react"
+import { Search, Users, Lightbulb, Cog, CheckCircle, ArrowRight } from "lucide-react"
 
 interface AboutProcessProps {
   currentLang: "pt" | "en"
@@ -169,9 +169,9 @@ export function AboutProcess({ currentLang }: AboutProcessProps) {
           <div className="space-y-24">
             {t.steps.map((step, index) => (
               <div key={step.title} className="relative">
-                {/* Connection Line - Only between cards */}
+                {/* Connection Line - Only between cards - Hidden on mobile */}
                 {index < t.steps.length - 1 && (
-                  <div className="absolute left-1/2 transform -translate-x-1/2 w-1 h-20 bg-gradient-to-b from-[#20BCED] to-[#B6E1F2] rounded-full opacity-30" 
+                  <div className="hidden lg:block absolute left-1/2 transform -translate-x-1/2 w-1 h-20 bg-gradient-to-b from-[#20BCED] to-[#B6E1F2] rounded-full opacity-30" 
                        style={{ top: 'calc(50% + 80px)' }}></div>
                 )}
                 

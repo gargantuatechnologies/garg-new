@@ -10,7 +10,7 @@ export function PortfolioHero() {
       <div className="absolute inset-0">
         {/* Black Hole Core - Central void */}
         <motion.div
-          className="absolute top-[45%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 h-96 rounded-full"
+          className="absolute top-[35%] lg:top-[45%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-80 h-80 lg:w-96 lg:h-96 rounded-full"
           initial={{ scale: 0, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 2, delay: 0.5 }}
@@ -25,7 +25,7 @@ export function PortfolioHero() {
 
         {/* Accretion Disk - Outer ring */}
         <motion.div
-          className="absolute top-[45%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full"
+          className="absolute top-[35%] lg:top-[45%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] lg:w-[600px] lg:h-[600px] rounded-full"
           initial={{ scale: 0, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 2, delay: 1 }}
@@ -42,7 +42,7 @@ export function PortfolioHero() {
 
         {/* Accretion Disk - Inner ring */}
         <motion.div
-          className="absolute top-[45%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] rounded-full"
+          className="absolute top-[35%] lg:top-[45%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] lg:w-[500px] lg:h-[500px] rounded-full"
           initial={{ scale: 0, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 2, delay: 1.2 }}
@@ -59,7 +59,7 @@ export function PortfolioHero() {
 
         {/* Accretion Disk - Middle ring */}
         <motion.div
-          className="absolute top-[45%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] rounded-full"
+          className="absolute top-[35%] lg:top-[45%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[320px] h-[320px] lg:w-[400px] lg:h-[400px] rounded-full"
           initial={{ scale: 0, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 2, delay: 1.4 }}
@@ -76,7 +76,7 @@ export function PortfolioHero() {
 
          {/* Event Horizon - Glowing edge */}
          <motion.div
-           className="absolute top-[45%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[350px] h-[350px] rounded-full"
+           className="absolute top-[35%] lg:top-[45%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[280px] h-[280px] lg:w-[350px] lg:h-[350px] rounded-full"
            initial={{ scale: 0, opacity: 0 }}
            animate={{ scale: 1, opacity: 1 }}
            transition={{ duration: 2, delay: 1.6 }}
@@ -233,7 +233,7 @@ export function PortfolioHero() {
 
         {/* Spiral Arms - Flowing matter */}
         <motion.div
-          className="absolute top-[45%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full"
+          className="absolute top-[35%] lg:top-[45%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[650px] h-[650px] lg:w-[800px] lg:h-[800px] rounded-full"
           initial={{ scale: 0, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 2, delay: 1.8 }}
@@ -250,7 +250,7 @@ export function PortfolioHero() {
 
         {/* Matter Streams - Infalling material */}
         <motion.div
-          className="absolute top-[45%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] rounded-full"
+          className="absolute top-[35%] lg:top-[45%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] lg:w-[1000px] lg:h-[1000px] rounded-full"
           initial={{ scale: 0, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ duration: 2, delay: 2 }}
@@ -381,9 +381,9 @@ export function PortfolioHero() {
          initial={{ opacity: 0, y: 30 }}
          animate={{ opacity: 1, y: 0 }}
          transition={{ duration: 0.8 }}
-         className="absolute top-[42%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 text-center px-4"
+         className="absolute top-[32%] lg:top-[42%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 text-center px-4"
        >
-         <h1 className="text-3xl md:text-5xl lg:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-[#126AF9] to-[#20BCED] leading-tight">
+         <h1 className="text-4xl sm:text-5xl md:text-5xl lg:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-[#126AF9] to-[#20BCED] leading-tight">
            Nossos
            <br />
            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#20BCED] via-[#B6E1F2] to-[#126AF9]">
@@ -397,7 +397,7 @@ export function PortfolioHero() {
          initial={{ opacity: 0, y: 30 }}
          animate={{ opacity: 1, y: 0 }}
          transition={{ duration: 0.8, delay: 0.3 }}
-         className="absolute top-[85%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 text-center px-4 max-w-2xl"
+         className="absolute top-[75%] lg:top-[85%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 text-center px-4 max-w-2xl"
        >
          <p className="text-lg md:text-xl text-[#B6E1F2] leading-relaxed">
            Transformações reais que impactaram o mercado brasileiro. 

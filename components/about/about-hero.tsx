@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from "framer-motion"
-import { ArrowDown, Sparkles, Zap, Target } from "lucide-react"
+import { ArrowDown } from "lucide-react"
 
 interface AboutHeroProps {
   currentLang: "pt" | "en"
@@ -42,50 +42,53 @@ export function AboutHero({ currentLang }: AboutHeroProps) {
           }} />
         </div>
 
-        {/* Floating Particles with Complex Motion */}
-        {[...Array(30)].map((_, i) => (
-          <motion.div
-            key={`particle-${i}`}
-            className="absolute"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-            }}
-            animate={{
-              x: [0, Math.random() * 200 - 100, 0],
-              y: [0, Math.random() * 200 - 100, 0],
-              rotate: [0, 720, 0],
-              scale: [0.5, 1.5, 0.5],
-              opacity: [0, 1, 0],
-            }}
-            transition={{
-              duration: 15 + Math.random() * 10,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: Math.random() * 8,
-            }}
-          >
-            <div
-              className={`w-1 h-1 ${
-                i % 4 === 0 ? 'bg-[#126AF9]' : 
-                i % 4 === 1 ? 'bg-[#20BCED]' : 
-                i % 4 === 2 ? 'bg-[#B6E1F2]' : 'bg-[#FF6B6B]'
-              } rounded-full blur-sm`}
-            />
-          </motion.div>
-        ))}
+        {/* Floating Particles with Optimized Motion */}
+        {[...Array(20)].map((_, i) => {
+          const baseX = (i * 5) % 100
+          const baseY = (i * 7) % 100
+          const colorIndex = i % 4
+          
+          return (
+            <motion.div
+              key={`particle-${i}`}
+              className="absolute"
+              style={{
+                left: `${baseX}%`,
+                top: `${baseY}%`,
+              }}
+              animate={{
+                x: [0, (i % 3) * 50 - 75, 0],
+                y: [0, (i % 2) * 30 - 15, 0],
+                scale: [0.5, 1.2, 0.5],
+                opacity: [0, 0.8, 0],
+              }}
+              transition={{
+                duration: 12 + (i % 3) * 4,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: i * 0.5,
+              }}
+            >
+              <div
+                className={`w-1 h-1 ${
+                  colorIndex === 0 ? 'bg-[#126AF9]' : 
+                  colorIndex === 1 ? 'bg-[#20BCED]' : 
+                  colorIndex === 2 ? 'bg-[#B6E1F2]' : 'bg-[#FF6B6B]'
+                } rounded-full blur-sm`}
+              />
+            </motion.div>
+          )
+        })}
 
-        {/* Large Floating Orbs with Complex Animation */}
+        {/* Large Floating Orbs with Optimized Animation */}
         <motion.div
           className="absolute top-20 left-20 w-96 h-96 bg-gradient-to-r from-[#126AF9]/30 to-[#20BCED]/30 rounded-full blur-3xl"
           animate={{
-            scale: [1, 1.5, 1],
-            opacity: [0.2, 0.8, 0.2],
-            x: [0, 50, 0],
-            y: [0, -30, 0],
+            scale: [1, 1.3, 1],
+            opacity: [0.2, 0.6, 0.2],
           }}
           transition={{
-            duration: 12,
+            duration: 8,
             repeat: Infinity,
             ease: "easeInOut",
           }}
@@ -93,10 +96,21 @@ export function AboutHero({ currentLang }: AboutHeroProps) {
         <motion.div
           className="absolute bottom-20 right-20 w-80 h-80 bg-gradient-to-r from-[#20BCED]/25 to-[#B6E1F2]/25 rounded-full blur-3xl"
           animate={{
-            scale: [1.2, 1, 1.2],
-            opacity: [0.1, 0.6, 0.1],
-            x: [0, -40, 0],
-            y: [0, 40, 0],
+            scale: [1.1, 1, 1.1],
+            opacity: [0.1, 0.5, 0.1],
+          }}
+          transition={{
+            duration: 6,
+            repeat: Infinity,
+            ease: "easeInOut",
+            delay: 1,
+          }}
+        />
+        <motion.div
+          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-r from-[#B6E1F2]/20 to-[#FF6B6B]/20 rounded-full blur-3xl"
+          animate={{
+            scale: [0.8, 1.2, 0.8],
+            opacity: [0.1, 0.3, 0.1],
           }}
           transition={{
             duration: 10,
@@ -105,48 +119,40 @@ export function AboutHero({ currentLang }: AboutHeroProps) {
             delay: 2,
           }}
         />
-        <motion.div
-          className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-gradient-to-r from-[#B6E1F2]/20 to-[#FF6B6B]/20 rounded-full blur-3xl"
-          animate={{
-            scale: [0.8, 1.3, 0.8],
-            opacity: [0.1, 0.4, 0.1],
-            rotate: [0, 180, 360],
-          }}
-          transition={{
-            duration: 15,
-            repeat: Infinity,
-            ease: "easeInOut",
-            delay: 4,
-          }}
-        />
 
-        {/* Animated Lines */}
-        {[...Array(8)].map((_, i) => (
-          <motion.div
-            key={`line-${i}`}
-            className="absolute"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              width: `${Math.random() * 200 + 100}px`,
-              height: '1px',
-            }}
-            animate={{
-              x: [0, Math.random() * 300 - 150, 0],
-              y: [0, Math.random() * 200 - 100, 0],
-              opacity: [0, 0.6, 0],
-              scaleX: [0, 1, 0],
-            }}
-            transition={{
-              duration: 8 + Math.random() * 4,
-              repeat: Infinity,
-              ease: "easeInOut",
-              delay: Math.random() * 6,
-            }}
-          >
-            <div className="w-full h-full bg-gradient-to-r from-transparent via-[#20BCED]/40 to-transparent" />
-          </motion.div>
-        ))}
+        {/* Animated Lines - Optimized */}
+        {[...Array(5)].map((_, i) => {
+          const baseX = (i * 20) % 100
+          const baseY = (i * 15) % 100
+          const width = 100 + (i % 3) * 50
+          
+          return (
+            <motion.div
+              key={`line-${i}`}
+              className="absolute"
+              style={{
+                left: `${baseX}%`,
+                top: `${baseY}%`,
+                width: `${width}px`,
+                height: '1px',
+              }}
+              animate={{
+                x: [0, (i % 2) * 100 - 50, 0],
+                y: [0, (i % 3) * 30 - 15, 0],
+                opacity: [0, 0.4, 0],
+                scaleX: [0, 1, 0],
+              }}
+              transition={{
+                duration: 6 + (i % 2) * 2,
+                repeat: Infinity,
+                ease: "easeInOut",
+                delay: i * 0.8,
+              }}
+            >
+              <div className="w-full h-full bg-gradient-to-r from-transparent via-[#20BCED]/40 to-transparent" />
+            </motion.div>
+          )
+        })}
       </div>
 
       {/* Content */}

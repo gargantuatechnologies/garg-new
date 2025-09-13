@@ -107,9 +107,15 @@ export function Header({ currentLang, onLanguageChange, currentPage = "home" }: 
             size="sm"
             className="border-[#8b9bb3] text-[#c5d4e6] hover:bg-[#8b9bb3] hover:text-white bg-transparent px-5 py-1.5 text-sm rounded-full"
             onClick={() => {
-              const ctaSection = document.getElementById('cta');
-              if (ctaSection) {
-                ctaSection.scrollIntoView({ behavior: 'smooth' });
+              if (currentPage === "home") {
+                // Se estiver na homepage, apenas faz scroll
+                const ctaSection = document.getElementById('cta');
+                if (ctaSection) {
+                  ctaSection.scrollIntoView({ behavior: 'smooth' });
+                }
+              } else {
+                // Se estiver em outra página, redireciona para homepage com scroll
+                window.location.href = '/#cta';
               }
             }}
           >
@@ -193,9 +199,15 @@ export function Header({ currentLang, onLanguageChange, currentPage = "home" }: 
                 className="w-fit border-[#8b9bb3] text-[#c5d4e6] hover:bg-[#8b9bb3] hover:text-white bg-transparent px-4 py-1.5 text-sm rounded-full"
                 onClick={() => {
                   setIsMobileMenuOpen(false);
-                  const ctaSection = document.getElementById('cta');
-                  if (ctaSection) {
-                    ctaSection.scrollIntoView({ behavior: 'smooth' });
+                  if (currentPage === "home") {
+                    // Se estiver na homepage, apenas faz scroll
+                    const ctaSection = document.getElementById('cta');
+                    if (ctaSection) {
+                      ctaSection.scrollIntoView({ behavior: 'smooth' });
+                    }
+                  } else {
+                    // Se estiver em outra página, redireciona para homepage com scroll
+                    window.location.href = '/#cta';
                   }
                 }}
               >
