@@ -3,7 +3,7 @@
 import React, { useState } from 'react'
 import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
-import { CreditCard, Smartphone, Database, BarChart3, Shield, Cog, ChevronRight, Play, Brain, Coins } from "lucide-react"
+import { CreditCard, Smartphone, Database, BarChart3, Shield, Cog, ChevronRight, Brain, Coins } from "lucide-react"
 
 interface ServicesSectionProps {
   currentLang: "pt" | "en"
@@ -13,7 +13,6 @@ const translations = {
   pt: {
     title: "Nossas Especialidades",
     subtitle: "Soluções completas para impulsionar seu negócio",
-    cta: "Explorar",
     next: "Próximo",
     services: [
       {
@@ -63,7 +62,6 @@ const translations = {
   en: {
     title: "Our Specialties",
     subtitle: "Complete solutions to boost your business",
-    cta: "Explore",
     next: "Next",
     services: [
       {
@@ -154,21 +152,6 @@ const MainServiceCard = ({ service }: { service: any }) => (
                 ))}
               </ul>
 
-    {/* CTA Button */}
-              <Button
-      className={`w-3/4 mx-auto bg-gradient-to-r ${service.color} hover:opacity-90 text-white font-semibold py-2 text-sm transition-all duration-300 group-hover:scale-105 relative overflow-hidden`}
-      style={{
-        background: `linear-gradient(45deg, ${service.color.includes('126AF9') ? '#126AF9' : service.color.includes('20BCED') ? '#20BCED' : '#B6E1F2'}, ${service.color.includes('20BCED') ? '#20BCED' : service.color.includes('B6E1F2') ? '#B6E1F2' : '#126AF9'}, ${service.color.includes('B6E1F2') ? '#B6E1F2' : service.color.includes('126AF9') ? '#126AF9' : '#20BCED'})`,
-        backgroundSize: '200% 200%',
-        animation: 'gradient-flow 3s ease infinite'
-      }}
-              >
-      {/* Efeito de brilho deslizante */}
-      <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 transform translate-x-[-100%] group-hover:translate-x-[100%]"></div>
-      
-      <Play className="h-3 w-3 mr-2 relative z-10" />
-      <span className="relative z-10">Explorar</span>
-              </Button>
             </Card>
 )
 

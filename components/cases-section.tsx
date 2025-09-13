@@ -1,9 +1,8 @@
 'use client';
 
 import React, { useState } from 'react';
-import { Card } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { ChevronLeft, ChevronRight, ArrowRight } from 'lucide-react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
 
 interface CasesSectionProps {
   currentLang: 'pt' | 'en';
@@ -13,7 +12,6 @@ const translations = {
   pt: {
     title: "Nossos Cases",
     subtitle: "Transformações reais que impactaram o mercado brasileiro",
-    cta: "Conheça Nossos Cases",
     cases: [
       {
         id: 1,
@@ -52,7 +50,6 @@ const translations = {
   en: {
     title: "Our Cases",
     subtitle: "Real transformations that impacted the Brazilian market",
-    cta: "Discover Our Cases",
     cases: [
       {
         id: 1,

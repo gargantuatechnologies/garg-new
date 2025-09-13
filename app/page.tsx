@@ -1,21 +1,21 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { Header } from "@/components/header"
-import { HeroSection } from "@/components/hero-section"
-import ConceptSection from "@/components/concept-section"
-import { ServicesSection } from "@/components/services-section"
-import { CasesSection } from "@/components/cases-section"
-import { PartnersSection } from "@/components/partners-section"
-import { CTASection } from "@/components/cta-section"
-import { Footer } from "@/components/footer"
+import { useState } from "react";
+import { Header } from "@/components/header";
+import { HeroSection } from "@/components/hero-section";
+import ConceptSection from "@/components/concept-section";
+import { ServicesSection } from "@/components/services-section";
+import { CasesSection } from "@/components/cases-section";
+import { PartnersSection } from "@/components/partners-section";
+import { CTASection } from "@/components/cta-section";
+import { Footer } from "@/components/footer";
 
 export default function HomePage() {
-  const [currentLang, setCurrentLang] = useState<"pt" | "en">("pt")
+  const [currentLang, setCurrentLang] = useState<"pt" | "en">("pt");
 
   const handleLanguageChange = (lang: "pt" | "en") => {
-    setCurrentLang(lang)
-  }
+    setCurrentLang(lang);
+  };
 
   return (
     <main className="min-h-screen">
@@ -28,5 +28,5 @@ export default function HomePage() {
       <CTASection currentLang={currentLang} />
       <Footer currentLang={currentLang} />
     </main>
-  )
+  );
 }

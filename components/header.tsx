@@ -3,13 +3,13 @@
 import { useState, useEffect } from "react"
 import { Button } from "@/components/ui/button"
 import { WorkWithUsDialog } from "@/components/work-with-us-dialog"
-import { ContactDialog } from "@/components/contact-dialog"
 import { Globe, Menu, X } from "lucide-react"
 import Image from "next/image"
 
 interface HeaderProps {
   currentLang: "pt" | "en"
   onLanguageChange: (lang: "pt" | "en") => void
+  currentPage?: "home" | "portfolio" | "project"
 }
 
 const translations = {
@@ -27,7 +27,7 @@ const translations = {
   },
 }
 
-export function Header({ currentLang, onLanguageChange }: HeaderProps) {
+export function Header({ currentLang, onLanguageChange, currentPage = "home" }: HeaderProps) {
   const [isScrolled, setIsScrolled] = useState(false)
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const t = translations[currentLang]
@@ -49,25 +49,30 @@ export function Header({ currentLang, onLanguageChange }: HeaderProps) {
   }
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 transition-all duration-500" style={{ zIndex: 50 }}>
+    <header className="fixed top-0 left-0 right-0 z-40 transition-all duration-500">
       <div
         className={`glass-floating-enhanced px-8 py-4 transition-all duration-500 ${
           isScrolled 
             ? "border-b border-[#126AF9]/30" 
             : "border-b border-[#4a5568]/20"
-        }`}
+        } lg:border-b`}
       >
         <div className="container mx-auto flex items-center justify-between w-full">
           {/* Logo compacto */}
           <div className="flex items-center space-x-3">
-            <Image
-              src="/images/logo-dark.png"
-              alt="Gargantua Technologies"
-              width={160}
-              height={32}
-              className="h-8 w-auto"
-              priority
-            />
+            <button 
+              onClick={() => window.location.href = '/'}
+              className="hover:opacity-80 transition-opacity cursor-pointer"
+            >
+              <Image
+                src="/images/logo-dark.png"
+                alt="Gargantua Technologies"
+                width={160}
+                height={32}
+                className="h-8 w-auto"
+                priority
+              />
+            </button>
           </div>
 
           {/* Navegação desktop */}
@@ -79,8 +84,12 @@ export function Header({ currentLang, onLanguageChange }: HeaderProps) {
               {t.about}
             </button>
             <button 
-              onClick={() => scrollToSection('cases')}
-              className="text-[#c5d4e6] hover:text-[#e8eef5] transition-colors font-medium text-sm px-4 py-1.5 rounded-full hover:bg-[#126AF9]/10"
+              onClick={() => window.location.href = '/portfolio'}
+              className={`transition-colors font-medium text-sm px-4 py-1.5 rounded-full hover:bg-[#126AF9]/10 ${
+                currentPage === "portfolio" 
+                  ? "text-[#20BCED] bg-[#20BCED]/10 border border-[#20BCED]/30" 
+                  : "text-[#c5d4e6] hover:text-[#e8eef5]"
+              }`}
             >
               {t.portfolio}
             </button>
@@ -89,15 +98,19 @@ export function Header({ currentLang, onLanguageChange }: HeaderProps) {
                 {t.workWithUs}
               </button>
             </WorkWithUsDialog>
-          <ContactDialog currentLang={currentLang}>
-            <Button
-              variant="outline"
-              size="sm"
-              className="border-[#8b9bb3] text-[#c5d4e6] hover:bg-[#8b9bb3] hover:text-white bg-transparent px-5 py-1.5 text-sm rounded-full"
-            >
-              {t.contact}
-            </Button>
-          </ContactDialog>
+          <Button
+            variant="outline"
+            size="sm"
+            className="border-[#8b9bb3] text-[#c5d4e6] hover:bg-[#8b9bb3] hover:text-white bg-transparent px-5 py-1.5 text-sm rounded-full"
+            onClick={() => {
+              const ctaSection = document.getElementById('cta');
+              if (ctaSection) {
+                ctaSection.scrollIntoView({ behavior: 'smooth' });
+              }
+            }}
+          >
+            {t.contact}
+          </Button>
           </nav>
 
           {/* Idioma e Menu mobile */}
@@ -149,8 +162,12 @@ export function Header({ currentLang, onLanguageChange }: HeaderProps) {
                 {t.about}
               </button>
               <button 
-                onClick={() => scrollToSection('cases')}
-                className="text-[#c5d4e6] hover:text-[#e8eef5] transition-colors font-medium text-sm px-3 py-2 rounded-full hover:bg-[#126AF9]/10 text-left"
+                onClick={() => window.location.href = '/portfolio'}
+                className={`transition-colors font-medium text-sm px-3 py-2 rounded-full hover:bg-[#126AF9]/10 text-left ${
+                  currentPage === "portfolio" 
+                    ? "text-[#20BCED] bg-[#20BCED]/10 border border-[#20BCED]/30" 
+                    : "text-[#c5d4e6] hover:text-[#e8eef5]"
+                }`}
               >
                 {t.portfolio}
               </button>
@@ -162,16 +179,20 @@ export function Header({ currentLang, onLanguageChange }: HeaderProps) {
                   {t.workWithUs}
                 </button>
               </WorkWithUsDialog>
-              <ContactDialog currentLang={currentLang}>
-                <Button
-                  variant="outline"
-                  size="sm"
-                  className="w-fit border-[#8b9bb3] text-[#c5d4e6] hover:bg-[#8b9bb3] hover:text-white bg-transparent px-4 py-1.5 text-sm rounded-full"
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  {t.contact}
-                </Button>
-              </ContactDialog>
+              <Button
+                variant="outline"
+                size="sm"
+                className="w-fit border-[#8b9bb3] text-[#c5d4e6] hover:bg-[#8b9bb3] hover:text-white bg-transparent px-4 py-1.5 text-sm rounded-full"
+                onClick={() => {
+                  setIsMobileMenuOpen(false);
+                  const ctaSection = document.getElementById('cta');
+                  if (ctaSection) {
+                    ctaSection.scrollIntoView({ behavior: 'smooth' });
+                  }
+                }}
+              >
+                {t.contact}
+              </Button>
             </nav>
           </div>
         )}

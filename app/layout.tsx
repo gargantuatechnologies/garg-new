@@ -1,10 +1,10 @@
-import type React from "react"
-import type { Metadata } from "next"
-import { GeistSans } from "geist/font/sans"
-import { GeistMono } from "geist/font/mono"
-import { Analytics } from "@vercel/analytics/next"
-import { Suspense } from "react"
-import "./globals.css"
+import type React from "react";
+import type { Metadata } from "next";
+import { GeistSans } from "geist/font/sans";
+import { GeistMono } from "geist/font/mono";
+import { Analytics } from "@vercel/analytics/next";
+import { Suspense } from "react";
+import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Gargantua Technologies | Alcance a Singularidade",
@@ -25,30 +25,59 @@ export const metadata: Metadata = {
     locale: "pt_BR",
     url: "https://gargantua.tech",
     title: "Gargantua Technologies | Alcance a Singularidade",
-    description:
-      "Softwarehouse especializada em soluções de pagamento, BaaS, aplicativos mobile e sistemas ERP complexos.",
+    description: "Softwarehouse especializada em soluções de pagamento, BaaS, aplicativos mobile e sistemas ERP complexos.",
     siteName: "Gargantua Technologies",
   },
   twitter: {
     card: "summary_large_image",
     title: "Gargantua Technologies | Alcance a Singularidade",
-    description:
-      "Softwarehouse especializada em soluções de pagamento, BaaS, aplicativos mobile e sistemas ERP complexos.",
+    description: "Softwarehouse especializada em soluções de pagamento, BaaS, aplicativos mobile e sistemas ERP complexos.",
   },
   generator: "Next.js",
-}
+};
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode
+  children: React.ReactNode;
 }>) {
   return (
     <html lang="pt-BR" className="dark">
+      <head>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              // Clean up duplicate Google Calendar buttons
+              function cleanupGoogleCalendarButtons() {
+                const buttons = document.querySelectorAll('button');
+                let duplicateCount = 0;
+                
+                buttons.forEach((button, index) => {
+                  if (button.textContent && button.textContent.includes('Agendar uma Reunião')) {
+                    // Keep only the first few buttons, remove the rest
+                    if (index > 5) {
+                      button.remove();
+                      duplicateCount++;
+                    }
+                  }
+                });
+                
+                if (duplicateCount > 0) {
+                  console.log('Removed', duplicateCount, 'duplicate Google Calendar buttons');
+                }
+              }
+              
+              // Run cleanup on page load and periodically
+              document.addEventListener('DOMContentLoaded', cleanupGoogleCalendarButtons);
+              setInterval(cleanupGoogleCalendarButtons, 2000);
+            `,
+          }}
+        />
+      </head>
       <body className={`font-sans ${GeistSans.variable} ${GeistMono.variable} antialiased`}>
         <Suspense fallback={null}>{children}</Suspense>
         <Analytics />
       </body>
     </html>
-  )
+  );
 }
