@@ -4,63 +4,131 @@ import { motion } from "framer-motion"
 import { PortfolioCard } from "./portfolio-card"
 import { useState } from "react"
 
-const projects = [
-  {
-    id: 1,
-    title: "Grupo Fast",
-    subtitle: "FastPay & FastSoft",
-    description: "Parceria estratégica para transformar o white-label da FastSoft em uma solução completamente personalizável, aumentando exponencialmente a demanda e satisfação dos clientes.",
-    category: "Pagamentos",
-    image: "/images/fast-group-cases/ALLUS-DASH.png",
-    images: [
-      "/images/fast-group-cases/ALLUS-DASH.png",
-      "/images/fast-group-cases/app-payhub.png",
-      "/images/fast-group-cases/App-fastpay-mockup.png",
-      "/images/fast-group-cases/dashboard-payhub.png"
-    ],
-    technologies: ["React Native", "Node.js", "PostgreSQL", "AWS"],
-    stats: {
-      clients: "500+",
-      satisfaction: "98%",
-      uptime: "99.9%"
-    },
-    featured: true
-  },
-  {
-    id: 2,
-    title: "DCréditos",
-    subtitle: "Empréstimos para MPEs",
-    description: "Desenvolvimento de sistema completo que revolucionou as operações da DCréditos, reduzindo fraudes em 90% e otimizando drasticamente os processos internos.",
-    category: "Fintech",
-    image: "/images/midas-case/dcredito-operators-ranking.png",
-    images: [
-      "/images/midas-case/dcredito-operators-ranking.png",
-      "/images/midas-case/MIDAS PHONES 1.png",
-      "/images/midas-case/Screenshot_1.png",
-      "/images/midas-case/Screenshot_16.png"
-    ],
-    technologies: ["React", "Python", "Machine Learning", "Docker"],
-    stats: {
-      fraudReduction: "90%",
-      efficiency: "85%",
-      processing: "3x mais rápido"
-    },
-    featured: true
-  }
-]
+interface PortfolioGridProps {
+  currentLang: "pt" | "en"
+}
 
-export function PortfolioGrid() {
+const translations = {
+  pt: {
+    title: "Nossos",
+    titleHighlight: "Projetos",
+    subtitle: "Cada projeto é uma jornada de inovação e excelência. Explore nossos cases de sucesso e descubra como transformamos ideias em realidade.",
+    filters: [
+      { id: "all", label: "Todos" },
+      { id: "Pagamentos", label: "Pagamentos" },
+      { id: "Fintech", label: "Fintech" }
+    ],
+    projects: [
+      {
+        id: 1,
+        title: "Grupo Fast",
+        subtitle: "FastPay & FastSoft",
+        description: "Parceria estratégica para transformar o white-label da FastSoft em uma solução completamente personalizável, aumentando exponencialmente a demanda e satisfação dos clientes.",
+        category: "Pagamentos",
+        image: "/images/fast-group-cases/ALLUS-DASH.png",
+        images: [
+          "/images/fast-group-cases/ALLUS-DASH.png",
+          "/images/fast-group-cases/app-payhub.png",
+          "/images/fast-group-cases/App-fastpay-mockup.png",
+          "/images/fast-group-cases/dashboard-payhub.png"
+        ],
+        technologies: ["React Native", "Node.js", "PostgreSQL", "AWS"],
+        stats: {
+          clients: "500+",
+          satisfaction: "98%",
+          uptime: "99.9%"
+        },
+        featured: true
+      },
+      {
+        id: 2,
+        title: "DCréditos",
+        subtitle: "Empréstimos para MPEs",
+        description: "Desenvolvimento de sistema completo que revolucionou as operações da DCréditos, reduzindo fraudes em 90% e otimizando drasticamente os processos internos.",
+        category: "Fintech",
+        image: "/images/midas-case/dcredito-operators-ranking.png",
+        images: [
+          "/images/midas-case/dcredito-operators-ranking.png",
+          "/images/midas-case/MIDAS PHONES 1.png",
+          "/images/midas-case/Screenshot_1.png",
+          "/images/midas-case/Screenshot_16.png"
+        ],
+        technologies: ["React", "Python", "Machine Learning", "Docker"],
+        stats: {
+          fraudReduction: "90%",
+          efficiency: "85%",
+          processing: "3x mais rápido"
+        },
+        featured: true
+      }
+    ]
+  },
+  en: {
+    title: "Our",
+    titleHighlight: "Projects",
+    subtitle: "Each project is a journey of innovation and excellence. Explore our success cases and discover how we transform ideas into reality.",
+    filters: [
+      { id: "all", label: "All" },
+      { id: "Pagamentos", label: "Payments" },
+      { id: "Fintech", label: "Fintech" }
+    ],
+    projects: [
+      {
+        id: 1,
+        title: "Fast Group",
+        subtitle: "FastPay & FastSoft",
+        description: "Strategic partnership to transform FastSoft's white-label into a completely customizable solution, exponentially increasing demand and customer satisfaction.",
+        category: "Pagamentos",
+        image: "/images/fast-group-cases/ALLUS-DASH.png",
+        images: [
+          "/images/fast-group-cases/ALLUS-DASH.png",
+          "/images/fast-group-cases/app-payhub.png",
+          "/images/fast-group-cases/App-fastpay-mockup.png",
+          "/images/fast-group-cases/dashboard-payhub.png"
+        ],
+        technologies: ["React Native", "Node.js", "PostgreSQL", "AWS"],
+        stats: {
+          clients: "500+",
+          satisfaction: "98%",
+          uptime: "99.9%"
+        },
+        featured: true
+      },
+      {
+        id: 2,
+        title: "DCréditos",
+        subtitle: "Loans for SMEs",
+        description: "Complete system development that revolutionized DCréditos operations, reducing fraud by 90% and drastically optimizing internal processes.",
+        category: "Fintech",
+        image: "/images/midas-case/dcredito-operators-ranking.png",
+        images: [
+          "/images/midas-case/dcredito-operators-ranking.png",
+          "/images/midas-case/MIDAS PHONES 1.png",
+          "/images/midas-case/Screenshot_1.png",
+          "/images/midas-case/Screenshot_16.png"
+        ],
+        technologies: ["React", "Python", "Machine Learning", "Docker"],
+        stats: {
+          fraudReduction: "90%",
+          efficiency: "85%",
+          processing: "3x faster"
+        },
+        featured: true
+      }
+    ]
+  }
+}
+
+export function PortfolioGrid({ currentLang }: PortfolioGridProps) {
+  const t = translations[currentLang]
+  
   const [filter, setFilter] = useState("all")
 
-  const categories = [
-    { id: "all", label: "Todos" },
-    { id: "Pagamentos", label: "Pagamentos" },
-    { id: "Fintech", label: "Fintech" }
-  ]
+  const categories = t.filters
 
   const filteredProjects = filter === "all" 
-    ? projects 
-    : projects.filter(project => project.category === filter)
+    ? t.projects 
+    : t.projects.filter(project => project.category === filter)
 
   return (
     <section className="py-20 relative">
@@ -80,10 +148,10 @@ export function PortfolioGrid() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl md:text-5xl font-black text-white mb-6">
-            Nossos <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#20BCED] to-[#B6E1F2]">Projetos</span>
+            {t.title} <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#20BCED] to-[#B6E1F2]">{t.titleHighlight}</span>
           </h2>
           <p className="text-lg text-[#B6E1F2] max-w-3xl mx-auto mb-8">
-            Cada projeto é uma história de transformação digital, inovação e resultados excepcionais
+            {t.subtitle}
           </p>
         </motion.div>
 
@@ -122,7 +190,7 @@ export function PortfolioGrid() {
               transition={{ duration: 0.6, delay: index * 0.1 }}
               viewport={{ once: true }}
             >
-              <PortfolioCard project={project} />
+              <PortfolioCard project={project} currentLang={currentLang} />
             </motion.div>
           ))}
         </div>

@@ -20,9 +20,22 @@ interface Project {
 
 interface PortfolioCardProps {
   project: Project
+  currentLang: "pt" | "en"
 }
 
-export function PortfolioCard({ project }: PortfolioCardProps) {
+const translations = {
+  pt: {
+    featured: "Destaque",
+    viewDetails: "Ver Detalhes"
+  },
+  en: {
+    featured: "Featured",
+    viewDetails: "View Details"
+  }
+}
+
+export function PortfolioCard({ project, currentLang }: PortfolioCardProps) {
+  const t = translations[currentLang]
   return (
     <motion.div
       whileHover={{ y: -8 }}
@@ -35,7 +48,7 @@ export function PortfolioCard({ project }: PortfolioCardProps) {
           <div className="absolute top-4 left-4 z-10">
             <div className="flex items-center gap-1 px-3 py-1 bg-gradient-to-r from-[#126AF9] to-[#20BCED] rounded-full text-white text-xs font-semibold">
               <Star className="h-3 w-3" />
-              Destaque
+              {t.featured}
             </div>
           </div>
         )}
@@ -110,7 +123,7 @@ export function PortfolioCard({ project }: PortfolioCardProps) {
               whileTap={{ scale: 0.98 }}
               className="flex items-center justify-center gap-2 w-full py-3 bg-gradient-to-r from-[#126AF9] to-[#20BCED] hover:from-[#052699] hover:to-[#0ea5e9] text-white font-semibold rounded-xl transition-all duration-300 group/btn"
             >
-              <span>Ver Detalhes</span>
+              <span>{t.viewDetails}</span>
               <ArrowRight className="h-4 w-4 group-hover/btn:translate-x-1 transition-transform" />
             </motion.div>
           </Link>

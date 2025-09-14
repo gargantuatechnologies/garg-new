@@ -5,10 +5,21 @@ import { useEffect, useState } from "react"
 
 interface PortfolioWrapperProps {
   children: React.ReactNode
+  currentLang?: "pt" | "en"
 }
 
-export function PortfolioWrapper({ children }: PortfolioWrapperProps) {
+const translations = {
+  pt: {
+    loading: "Carregando portfolio..."
+  },
+  en: {
+    loading: "Loading portfolio..."
+  }
+}
+
+export function PortfolioWrapper({ children, currentLang = "pt" }: PortfolioWrapperProps) {
   const [isClient, setIsClient] = useState(false)
+  const t = translations[currentLang]
 
   useEffect(() => {
     setIsClient(true)
@@ -19,7 +30,7 @@ export function PortfolioWrapper({ children }: PortfolioWrapperProps) {
       <div className="min-h-screen bg-gradient-to-br from-[#0a0a0a] via-[#1a1a1a] to-[#0f0f0f] flex items-center justify-center">
         <div className="text-center">
           <div className="w-16 h-16 border-4 border-[#126AF9] border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-          <p className="text-[#B6E1F2]">Carregando portfolio...</p>
+          <p className="text-[#B6E1F2]">{t.loading}</p>
         </div>
       </div>
     )

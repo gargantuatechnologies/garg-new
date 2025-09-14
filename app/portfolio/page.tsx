@@ -15,10 +15,10 @@ export default function PortfolioPage() {
     <main className="min-h-screen">
       <Header currentLang={currentLang} onLanguageChange={setCurrentLang} currentPage="portfolio" />
       <div className="">
-        <PortfolioHero />
-        <PortfolioStats />
-        <PortfolioGrid />
-        <PortfolioCTA />
+        <PortfolioHero currentLang={currentLang} />
+        <PortfolioStats currentLang={currentLang} />
+        <PortfolioGrid currentLang={currentLang} />
+        <PortfolioCTA currentLang={currentLang} />
       </div>
       <Footer currentLang={currentLang} />
     </main>

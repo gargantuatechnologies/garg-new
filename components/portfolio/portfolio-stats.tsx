@@ -3,34 +3,89 @@
 import { motion } from "framer-motion"
 import { TrendingUp, Users, Award, Zap } from "lucide-react"
 
-const stats = [
-  {
-    icon: TrendingUp,
-    value: "90%",
-    label: "Redução de Fraudes",
-    description: "Sistema DCréditos"
-  },
-  {
-    icon: Users,
-    value: "20+",
-    label: "Clientes Atendidos",
-    description: "Grupo Fast"
-  },
-  {
-    icon: Award,
-    value: "100%",
-    label: "Satisfação",
-    description: "Taxa de aprovação"
-  },
-  {
-    icon: Zap,
-    value: "24/7",
-    label: "Disponibilidade",
-    description: "Sistemas em produção"
-  }
-]
+interface PortfolioStatsProps {
+  currentLang: "pt" | "en"
+}
 
-export function PortfolioStats() {
+const translations = {
+  pt: {
+    title: "Números que",
+    titleHighlight: "Impressionam",
+    subtitle: "Resultados reais que demonstram nossa capacidade de transformar ideias em soluções de impacto.",
+    stats: [
+      {
+        label: "Redução de Fraudes",
+        description: "Sistema DCréditos"
+      },
+      {
+        label: "Clientes Atendidos",
+        description: "Grupo Fast"
+      },
+      {
+        label: "Satisfação",
+        description: "Taxa de aprovação"
+      },
+      {
+        label: "Disponibilidade",
+        description: "Sistemas em produção"
+      }
+    ]
+  },
+  en: {
+    title: "Numbers that",
+    titleHighlight: "Impress",
+    subtitle: "Real results that demonstrate our ability to transform ideas into impactful solutions.",
+    stats: [
+      {
+        label: "Fraud Reduction",
+        description: "DCréditos System"
+      },
+      {
+        label: "Clients Served",
+        description: "Fast Group"
+      },
+      {
+        label: "Satisfaction",
+        description: "Approval rate"
+      },
+      {
+        label: "Availability",
+        description: "Systems in production"
+      }
+    ]
+  }
+}
+
+export function PortfolioStats({ currentLang }: PortfolioStatsProps) {
+  const t = translations[currentLang]
+  
+  const stats = [
+    {
+      icon: TrendingUp,
+      value: "90%",
+      label: t.stats[0].label,
+      description: t.stats[0].description
+    },
+    {
+      icon: Users,
+      value: "20+",
+      label: t.stats[1].label,
+      description: t.stats[1].description
+    },
+    {
+      icon: Award,
+      value: "100%",
+      label: t.stats[2].label,
+      description: t.stats[2].description
+    },
+    {
+      icon: Zap,
+      value: "24/7",
+      label: t.stats[3].label,
+      description: t.stats[3].description
+    }
+  ]
+  
   return (
     <section className="py-20 relative">
       {/* Background */}
@@ -45,10 +100,10 @@ export function PortfolioStats() {
           className="text-center mb-16"
         >
           <h2 className="text-3xl md:text-4xl font-black text-white mb-4">
-            Números que <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#20BCED] to-[#B6E1F2]">Impressionam</span>
+            {t.title} <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#20BCED] to-[#B6E1F2]">{t.titleHighlight}</span>
           </h2>
           <p className="text-lg text-[#B6E1F2] max-w-2xl mx-auto">
-            Resultados reais dos nossos projetos em produção
+            {t.subtitle}
           </p>
         </motion.div>
 

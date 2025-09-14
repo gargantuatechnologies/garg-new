@@ -3,7 +3,25 @@
 import { motion } from "framer-motion"
 import { ArrowDown, Sparkles } from "lucide-react"
 
-export function PortfolioHero() {
+interface PortfolioHeroProps {
+  currentLang: "pt" | "en"
+}
+
+const translations = {
+  pt: {
+    title: "Nossos",
+    titleSecond: "Projetos",
+    subtitle: "Transformações reais que impactaram o mercado."
+  },
+  en: {
+    title: "Our",
+    titleSecond: "Projects",
+    subtitle: "Real transformations that impacted the market."
+  }
+}
+
+export function PortfolioHero({ currentLang }: PortfolioHeroProps) {
+  const t = translations[currentLang]
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden bg-black">
       {/* Black Hole Animation Background */}
@@ -384,10 +402,10 @@ export function PortfolioHero() {
          className="absolute top-[32%] lg:top-[42%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 text-center px-4"
        >
          <h1 className="text-4xl sm:text-5xl md:text-5xl lg:text-6xl font-black text-transparent bg-clip-text bg-gradient-to-r from-white via-[#126AF9] to-[#20BCED] leading-tight">
-           Nossos
+           {t.title}
            <br />
            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#20BCED] via-[#B6E1F2] to-[#126AF9]">
-             Projetos
+             {t.titleSecond}
            </span>
          </h1>
        </motion.div>
@@ -400,8 +418,7 @@ export function PortfolioHero() {
          className="absolute top-[75%] lg:top-[85%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-20 text-center px-4 max-w-2xl"
        >
          <p className="text-lg md:text-xl text-[#B6E1F2] leading-relaxed">
-           Transformações reais que impactaram o mercado brasileiro. 
-           Cada projeto é uma jornada de inovação e excelência.
+           {t.subtitle}
          </p>
        </motion.div>
 

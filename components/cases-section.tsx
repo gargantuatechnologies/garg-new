@@ -11,7 +11,7 @@ interface CasesSectionProps {
 const translations = {
   pt: {
     title: "Nossos Cases",
-    subtitle: "Transformações reais que impactaram o mercado brasileiro",
+    subtitle: "Transformações reais que impactaram o mercado",
     cases: [
       {
         id: 1,

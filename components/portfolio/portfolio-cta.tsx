@@ -3,7 +3,33 @@
 import { motion } from "framer-motion"
 import { ArrowRight, MessageCircle } from "lucide-react"
 
-export function PortfolioCTA() {
+interface PortfolioCTAProps {
+  currentLang: "pt" | "en"
+}
+
+const translations = {
+  pt: {
+    title: "Pronto para",
+    titleHighlight: "Transformar",
+    titleEnd: "seu negócio?",
+    subtitle: "Vamos conversar sobre como podemos levar sua empresa para o próximo nível com soluções tecnológicas de ponta.",
+    button1: "Iniciar Projeto",
+    button2: "Falar com Especialista",
+    or: "ou"
+  },
+  en: {
+    title: "Ready to",
+    titleHighlight: "Transform",
+    titleEnd: "your business?",
+    subtitle: "Let's talk about how we can take your company to the next level with cutting-edge technological solutions.",
+    button1: "Start Project",
+    button2: "Talk to Specialist",
+    or: "or"
+  }
+}
+
+export function PortfolioCTA({ currentLang }: PortfolioCTAProps) {
+  const t = translations[currentLang]
   const handleScheduleMeeting = () => {
     console.log('Button clicked, opening Google Calendar...')
     window.open('https://calendar.google.com/calendar/appointments/schedules/AcZssZ1nxGMr3hEjDt0doXHOXfUgFZcjCN9FVjX_ybSKrQrGkMu6YWv-Tf98us7SvAjlcEegty5Op2nb?gv=true', '_blank')
@@ -31,16 +57,17 @@ export function PortfolioCTA() {
           className="text-center max-w-4xl mx-auto"
         >
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6">
-            Pronto para seu
+            {t.title}
             <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#20BCED] via-[#B6E1F2] to-[#126AF9]">
-              Próximo Projeto?
+              {t.titleHighlight}
             </span>
+            <br />
+            {t.titleEnd}
           </h2>
           
           <p className="text-xl text-[#B6E1F2] mb-12 leading-relaxed">
-            Vamos transformar sua ideia em realidade. Nossa equipe está pronta para 
-            criar soluções que transcendem o comum e alcançam a singularidade.
+            {t.subtitle}
           </p>
 
           {/* CTA Buttons */}
@@ -51,11 +78,11 @@ export function PortfolioCTA() {
               onClick={handleScheduleMeeting}
               className="flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-[#126AF9] to-[#20BCED] hover:from-[#052699] hover:to-[#0ea5e9] text-white font-semibold rounded-2xl transition-all duration-300 group cursor-pointer"
             >
-              <span>Iniciar Projeto</span>
+              <span>{t.button1}</span>
               <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform" />
             </motion.div>
 
-            <div className="text-[#B6E1F2] font-medium">ou</div>
+            <div className="text-[#B6E1F2] font-medium">{t.or}</div>
 
             <motion.div
               whileHover={{ scale: 1.05 }}
@@ -64,7 +91,7 @@ export function PortfolioCTA() {
               className="flex items-center gap-3 px-8 py-4 border-2 border-[#20BCED] text-[#20BCED] hover:bg-[#20BCED] hover:text-white font-semibold rounded-2xl transition-all duration-300 group cursor-pointer"
             >
               <MessageCircle className="h-5 w-5 group-hover:scale-110 transition-transform" />
-              <span>Falar no WhatsApp</span>
+              <span>{t.button2}</span>
             </motion.div>
           </div>
         </motion.div>
