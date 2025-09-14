@@ -1,5 +1,5 @@
 import type React from "react";
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 import { Analytics } from "@vercel/analytics/next";
@@ -34,13 +34,17 @@ export const metadata: Metadata = {
     description: "Softwarehouse especializada em soluções de pagamento, BaaS, aplicativos mobile e sistemas ERP complexos.",
   },
   generator: "Next.js",
-  viewport: "width=device-width, initial-scale=1",
-  themeColor: "#126AF9",
   manifest: "/manifest.json",
   other: {
     "msapplication-TileColor": "#126AF9",
     "msapplication-config": "/browserconfig.xml",
   },
+};
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+  themeColor: "#126AF9",
 };
 
 export default function RootLayout({
