@@ -185,14 +185,15 @@ export function Header({ currentLang, onLanguageChange, currentPage = "home" }: 
               >
                 {t.portfolio}
               </button>
-              <WorkWithUsDialog currentLang={currentLang}>
-                <button 
-                  onClick={() => setIsMobileMenuOpen(false)}
-                  className="text-[#c5d4e6] hover:text-[#e8eef5] transition-colors font-medium text-sm px-3 py-2 rounded-full hover:bg-[#126AF9]/10 text-left w-full"
-                >
-                  {t.workWithUs}
-                </button>
-              </WorkWithUsDialog>
+              <button 
+                onClick={() => {
+                  setIsMobileMenuOpen(false)
+                  window.location.href = '/workwithus'
+                }}
+                className="text-[#c5d4e6] hover:text-[#e8eef5] transition-colors font-medium text-sm px-3 py-2 rounded-full hover:bg-[#126AF9]/10 text-left w-full"
+              >
+                {t.workWithUs}
+              </button>
               <Button
                 variant="outline"
                 size="sm"
