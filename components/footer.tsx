@@ -116,7 +116,7 @@ export function Footer({ currentLang }: FooterProps) {
             <a href="/privacy" className="text-[#878EA0] hover:text-[#20BCED] text-sm transition-colors">
               {t.privacy}
             </a>
-            <a href="#" className="text-[#878EA0] hover:text-[#20BCED] text-sm transition-colors">
+            <a href="/terms" className="text-[#878EA0] hover:text-[#20BCED] text-sm transition-colors">
               {t.terms}
             </a>
           </div>

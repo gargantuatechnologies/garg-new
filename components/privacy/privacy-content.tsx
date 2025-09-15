@@ -7,6 +7,7 @@ interface PrivacyContentProps {
 }
 
 export function PrivacyContent({ currentLang }: PrivacyContentProps) {
+
   return (
     <section className="pt-32 pb-16 relative overflow-hidden">
       <div className="container mx-auto px-4">
@@ -16,22 +17,20 @@ export function PrivacyContent({ currentLang }: PrivacyContentProps) {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <h1 className="text-4xl md:text-6xl font-black mb-6 text-center">
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#20BCED] via-[#B6E1F2] to-[#126AF9]">
-              {currentLang === "pt" ? "Política de Privacidade" : "Privacy Policy"}
-            </span>
+          <h1 className="font-heading text-4xl md:text-6xl mb-6 text-center">
+          <span className="text-gradient">{currentLang === "pt" ? "Política de Privacidade" : "Privacy Policy"}</span>
           </h1>
 
-          <div className="mt-12 glass-floating rounded-xl p-8 md:p-12 relative overflow-hidden">
+          <div className="mt-12 glass-effect rounded-xl p-8 md:p12 relative overflow-hidden">
             {/* Background effect */}
-            <div className="absolute top-0 right-0 w-64 h-64 bg-[#126AF9]/10 rounded-full blur-3xl -z-10"></div>
-            <div className="absolute bottom-0 left-0 w-64 h-64 bg-[#20BCED]/10 rounded-full blur-3xl -z-10"></div>
+            <div className="absolute top-0 right-0 w-64 h-64 bg-purple-600/10 rounded-full blur-3xl -z-10"></div>
+            <div className="absolute bottom-0 left-0 w-64 h-64 bg-indigo-600/10 rounded-full blur-3xl -z-10"></div>
 
-            <div className="prose prose-invert max-w-none text-white">
+            <div className="prose prose-invert max-w-none">
               {currentLang === "pt" ? (
                 <>
                   <h2 className="text-2xl font-bold text-center">Política de Privacidade – Versão Brasil</h2>
-                  <p className="text-center text-[#B6E1F2]/80">Última atualização: 18 de abril de 2025</p>
+                  <p className="text-center text-muted-foreground">Última atualização: 18 de abril de 2025</p>
 
                   <h3 className="text-xl font-bold mt-8">1. Introdução</h3>
                   <p>
@@ -55,69 +54,68 @@ export function PrivacyContent({ currentLang }: PrivacyContentProps) {
 
                   <h3 className="text-xl font-bold mt-6">3. Dados Pessoais que Coletamos</h3>
                   <div className="overflow-x-auto">
-                    <table className="min-w-full border border-[#126AF9]/30 rounded-lg">
-                      <thead>
-                        <tr className="bg-[#126AF9]/10">
-                          <th className="py-2 px-4 border-b border-[#126AF9]/30 text-left">Categoria</th>
-                          <th className="py-2 px-4 border-b border-[#126AF9]/30 text-left">Exemplos</th>
-                          <th className="py-2 px-4 border-b border-[#126AF9]/30 text-left">Origem</th>
+                  <table className="min-w-full border border-[#20BCED]/30 rounded-lg">                      <thead>
+                      <tr className="bg-[#126AF9]/20">
+                          <th className="py-2 px-4 border-b border-[#20BCED]/30 text-left">Categoria</th>
+                          <th className="py-2 px-4 border-b border-[#20BCED]/30 text-left">Exemplos</th>
+                          <th className="py-2 px-4 border-b border-[#20BCED]/30 text-left">Origem</th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30 font-medium">Identificadores</td>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30">
+                          <td className="py-2 px-4 border-b border-[#20BCED]/30 font-medium">Identificadores</td>
+                          <td className="py-2 px-4 border-b border-purple-500/30">
                             Nome, e‑mail, telefone, endereço, CPF/CNPJ, endereço IP
                           </td>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30">
+                          <td className="py-2 px-4 border-b border-purple-500/30">
                             Fornecidos por você; capturados automaticamente
                           </td>
                         </tr>
                         <tr>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30 font-medium">
+                          <td className="py-2 px-4 border-b border-[#20BCED]/30 font-medium">
                             Profissionais/Empresariais
                           </td>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30">
+                          <td className="py-2 px-4 border-b border-purple-500/30">
                             Empresa, cargo, nicho, nº de funcionários, escopo do projeto
                           </td>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30">Formulários, contratos, reuniões</td>
+                          <td className="py-2 px-4 border-b border-purple-500/30">Formulários, contratos, reuniões</td>
                         </tr>
                         <tr>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30 font-medium">Financeiros</td>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30">
+                          <td className="py-2 px-4 border-b border-[#20BCED]/30 font-medium">Financeiros</td>
+                          <td className="py-2 px-4 border-b border-purple-500/30">
                             Dados de cobrança, últimos dígitos do cartão, informações bancárias
                           </td>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30">Você; processadores de pagamento</td>
+                          <td className="py-2 px-4 border-b border-purple-500/30">Você; processadores de pagamento</td>
                         </tr>
                         <tr>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30 font-medium">Dados de Navegação</td>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30">
+                          <td className="py-2 px-4 border-b border-[#20BCED]/30 font-medium">Dados de Navegação</td>
+                          <td className="py-2 px-4 border-b border-purple-500/30">
                             Tipo de navegador, SO, páginas visitadas, tempo de sessão, cookies
                           </td>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30">Capturados automaticamente</td>
+                          <td className="py-2 px-4 border-b border-purple-500/30">Capturados automaticamente</td>
                         </tr>
                         <tr>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30 font-medium">
+                          <td className="py-2 px-4 border-b border-[#20BCED]/30 font-medium">
                             Geolocalização aproximada
                           </td>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30">
+                          <td className="py-2 px-4 border-b border-purple-500/30">
                             Cidade/Estado derivados do IP ou configurações do dispositivo
                           </td>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30">Automaticamente</td>
+                          <td className="py-2 px-4 border-b border-purple-500/30">Automaticamente</td>
                         </tr>
                         <tr>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30 font-medium">Conteúdo do Usuário</td>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30">
+                          <td className="py-2 px-4 border-b border-[#20BCED]/30 font-medium">Conteúdo do Usuário</td>
+                          <td className="py-2 px-4 border-b border-purple-500/30">
                             Arquivos, código, imagens, feedback, tickets de suporte
                           </td>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30">Você</td>
+                          <td className="py-2 px-4 border-b border-purple-500/30">Você</td>
                         </tr>
                         <tr>
-                          <td className="py-2 px-4 border-[#126AF9]/30 font-medium">Inferências</td>
-                          <td className="py-2 px-4 border-[#126AF9]/30">
+                          <td className="py-2 px-4 border-purple-500/30 font-medium">Inferências</td>
+                          <td className="py-2 px-4 border-purple-500/30">
                             Segmentos ou perfis gerados (ex.: "potencial cliente enterprise")
                           </td>
-                          <td className="py-2 px-4 border-[#126AF9]/30">Gargantua; ferramentas de analytics</td>
+                          <td className="py-2 px-4 border-purple-500/30">Gargantua; ferramentas de analytics</td>
                         </tr>
                       </tbody>
                     </table>
@@ -159,43 +157,42 @@ export function PrivacyContent({ currentLang }: PrivacyContentProps) {
                   <h3 className="text-xl font-bold mt-6">5. Bases Legais (LGPD, art. 7º)</h3>
                   <p>Tratamos dados com fundamento em:</p>
                   <div className="overflow-x-auto">
-                    <table className="min-w-full border border-[#126AF9]/30 rounded-lg">
-                      <thead>
-                        <tr className="bg-[#126AF9]/10">
-                          <th className="py-2 px-4 border-b border-[#126AF9]/30 text-left">Base Legal</th>
-                          <th className="py-2 px-4 border-b border-[#126AF9]/30 text-left">Exemplos de aplicação</th>
+                  <table className="min-w-full border border-[#20BCED]/30 rounded-lg">                      <thead>
+                      <tr className="bg-[#126AF9]/20">
+                          <th className="py-2 px-4 border-b border-[#20BCED]/30 text-left">Base Legal</th>
+                          <th className="py-2 px-4 border-b border-[#20BCED]/30 text-left">Exemplos de aplicação</th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30 font-medium">Execução de contrato</td>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30">
+                          <td className="py-2 px-4 border-b border-[#20BCED]/30 font-medium">Execução de contrato</td>
+                          <td className="py-2 px-4 border-b border-purple-500/30">
                             Entrega de software, suporte, faturamento
                           </td>
                         </tr>
                         <tr>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30 font-medium">Consentimento</td>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30">
+                          <td className="py-2 px-4 border-b border-[#20BCED]/30 font-medium">Consentimento</td>
+                          <td className="py-2 px-4 border-b border-purple-500/30">
                             Cookies não essenciais, newsletter, eventos Meta Pixel
                           </td>
                         </tr>
                         <tr>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30 font-medium">Legítimo interesse</td>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30">
+                          <td className="py-2 px-4 border-b border-[#20BCED]/30 font-medium">Legítimo interesse</td>
+                          <td className="py-2 px-4 border-b border-purple-500/30">
                             Marketing B2B, segurança da informação
                           </td>
                         </tr>
                         <tr>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30 font-medium">
+                          <td className="py-2 px-4 border-b border-[#20BCED]/30 font-medium">
                             Cumprimento de obrigação legal/regulatória
                           </td>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30">
+                          <td className="py-2 px-4 border-b border-purple-500/30">
                             Emissão de notas fiscais, prevenção à lavagem de dinheiro
                           </td>
                         </tr>
                         <tr>
-                          <td className="py-2 px-4 border-[#126AF9]/30 font-medium">Exercício regular de direitos</td>
-                          <td className="py-2 px-4 border-[#126AF9]/30">
+                          <td className="py-2 px-4 border-purple-500/30 font-medium">Exercício regular de direitos</td>
+                          <td className="py-2 px-4 border-purple-500/30">
                             Defesa em processos judiciais ou administrativos
                           </td>
                         </tr>
@@ -205,62 +202,61 @@ export function PrivacyContent({ currentLang }: PrivacyContentProps) {
 
                   <h3 className="text-xl font-bold mt-6">6. Compartilhamento de Dados</h3>
                   <div className="overflow-x-auto">
-                    <table className="min-w-full border border-[#126AF9]/30 rounded-lg">
-                      <thead>
-                        <tr className="bg-[#126AF9]/10">
-                          <th className="py-2 px-4 border-b border-[#126AF9]/30 text-left">Destinatário</th>
-                          <th className="py-2 px-4 border-b border-[#126AF9]/30 text-left">Finalidade</th>
-                          <th className="py-2 px-4 border-b border-[#126AF9]/30 text-left">Salvaguardas</th>
+                  <table className="min-w-full border border-[#20BCED]/30 rounded-lg">                      <thead>
+                      <tr className="bg-[#126AF9]/20">
+                          <th className="py-2 px-4 border-b border-[#20BCED]/30 text-left">Destinatário</th>
+                          <th className="py-2 px-4 border-b border-[#20BCED]/30 text-left">Finalidade</th>
+                          <th className="py-2 px-4 border-b border-[#20BCED]/30 text-left">Salvaguardas</th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30 font-medium">
+                          <td className="py-2 px-4 border-b border-[#20BCED]/30 font-medium">
                             Operadores/Subcontratados
                           </td>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30">
+                          <td className="py-2 px-4 border-b border-purple-500/30">
                             Hospedagem (AWS), e‑mail (SendGrid), pagamentos (Stripe)
                           </td>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30">
+                          <td className="py-2 px-4 border-b border-purple-500/30">
                             Cláusulas de confidencialidade; DPA
                           </td>
                         </tr>
                         <tr>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30 font-medium">
+                          <td className="py-2 px-4 border-b border-[#20BCED]/30 font-medium">
                             Parceiros de Publicidade
                           </td>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30">
+                          <td className="py-2 px-4 border-b border-purple-500/30">
                             Meta Ads, Google Ads para remarketing e atribuição
                           </td>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30">Dados hash/pseudonimizados</td>
+                          <td className="py-2 px-4 border-b border-purple-500/30">Dados hash/pseudonimizados</td>
                         </tr>
                         <tr>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30 font-medium">
+                          <td className="py-2 px-4 border-b border-[#20BCED]/30 font-medium">
                             Plataformas Integradas
                           </td>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30">
+                          <td className="py-2 px-4 border-b border-purple-500/30">
                             APIs que você conectar (ex.: Conversions API)
                           </td>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30">Conforme instruções suas</td>
+                          <td className="py-2 px-4 border-b border-purple-500/30">Conforme instruções suas</td>
                         </tr>
                         <tr>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30 font-medium">
+                          <td className="py-2 px-4 border-b border-[#20BCED]/30 font-medium">
                             Consultores Profissionais
                           </td>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30">Auditores, advogados, contadores</td>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30">Dever legal de sigilo</td>
+                          <td className="py-2 px-4 border-b border-purple-500/30">Auditores, advogados, contadores</td>
+                          <td className="py-2 px-4 border-b border-purple-500/30">Dever legal de sigilo</td>
                         </tr>
                         <tr>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30 font-medium">Autoridades</td>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30">
+                          <td className="py-2 px-4 border-b border-[#20BCED]/30 font-medium">Autoridades</td>
+                          <td className="py-2 px-4 border-b border-purple-500/30">
                             Respostas a ordens judiciais ou regulatórias
                           </td>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30">Verificação de legitimidade</td>
+                          <td className="py-2 px-4 border-b border-purple-500/30">Verificação de legitimidade</td>
                         </tr>
                         <tr>
-                          <td className="py-2 px-4 border-[#126AF9]/30 font-medium">Sucessores Empresariais</td>
-                          <td className="py-2 px-4 border-[#126AF9]/30">Fusão ou aquisição</td>
-                          <td className="py-2 px-4 border-[#126AF9]/30">Notificação prévia sempre que possível</td>
+                          <td className="py-2 px-4 border-purple-500/30 font-medium">Sucessores Empresariais</td>
+                          <td className="py-2 px-4 border-purple-500/30">Fusão ou aquisição</td>
+                          <td className="py-2 px-4 border-purple-500/30">Notificação prévia sempre que possível</td>
                         </tr>
                       </tbody>
                     </table>
@@ -272,33 +268,31 @@ export function PrivacyContent({ currentLang }: PrivacyContentProps) {
 
                   <h3 className="text-xl font-bold mt-6">7. Cookies, Pixels e Tecnologias Semelhantes</h3>
                   <div className="overflow-x-auto">
-                    <table className="min-w-full border border-[#126AF9]/30 rounded-lg">
-                      <thead>
-                        <tr className="bg-[#126AF9]/10">
-                          <th className="py-2 px-4 border-b border-[#126AF9]/30 text-left">Tipo</th>
-                          <th className="py-2 px-4 border-b border-[#126AF9]/30 text-left">Uso</th>
+                  <table className="min-w-full border border-[#20BCED]/30 rounded-lg">                      <thead>
+                      <tr className="bg-[#126AF9]/20">                          <th className="py-2 px-4 border-b border-[#20BCED]/30 text-left">Tipo</th>
+                          <th className="py-2 px-4 border-b border-[#20BCED]/30 text-left">Uso</th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30 font-medium">
+                          <td className="py-2 px-4 border-b border-[#20BCED]/30 font-medium">
                             Estritamente necessários
                           </td>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30">Login, balanceamento de carga</td>
+                          <td className="py-2 px-4 border-b border-purple-500/30">Login, balanceamento de carga</td>
                         </tr>
                         <tr>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30 font-medium">Análise de desempenho</td>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30">Google Analytics, Hotjar</td>
+                          <td className="py-2 px-4 border-b border-[#20BCED]/30 font-medium">Análise de desempenho</td>
+                          <td className="py-2 px-4 border-b border-purple-500/30">Google Analytics, Hotjar</td>
                         </tr>
                         <tr>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30 font-medium">Publicidade</td>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30">
+                          <td className="py-2 px-4 border-b border-[#20BCED]/30 font-medium">Publicidade</td>
+                          <td className="py-2 px-4 border-b border-purple-500/30">
                             Meta Pixel, Google Tag, eventos server‑side Conversions API
                           </td>
                         </tr>
                         <tr>
-                          <td className="py-2 px-4 border-[#126AF9]/30 font-medium">SDKs móveis</td>
-                          <td className="py-2 px-4 border-[#126AF9]/30">Notificações push, relatórios de crash</td>
+                          <td className="py-2 px-4 border-purple-500/30 font-medium">SDKs móveis</td>
+                          <td className="py-2 px-4 border-purple-500/30">Notificações push, relatórios de crash</td>
                         </tr>
                       </tbody>
                     </table>
@@ -339,63 +333,61 @@ export function PrivacyContent({ currentLang }: PrivacyContentProps) {
 
                   <h3 className="text-xl font-bold mt-6">11. Seus Direitos (LGPD, art. 18)</h3>
                   <div className="overflow-x-auto">
-                    <table className="min-w-full border border-[#126AF9]/30 rounded-lg">
-                      <thead>
-                        <tr className="bg-[#126AF9]/10">
-                          <th className="py-2 px-4 border-b border-[#126AF9]/30 text-left">Direito</th>
-                          <th className="py-2 px-4 border-b border-[#126AF9]/30 text-left">Como exercer</th>
+                  <table className="min-w-full border border-[#20BCED]/30 rounded-lg">                      <thead>
+                      <tr className="bg-[#126AF9]/20">                          <th className="py-2 px-4 border-b border-[#20BCED]/30 text-left">Direito</th>
+                          <th className="py-2 px-4 border-b border-[#20BCED]/30 text-left">Como exercer</th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30 font-medium">
+                          <td className="py-2 px-4 border-b border-[#20BCED]/30 font-medium">
                             Confirmação da existência de tratamento
                           </td>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30">
+                          <td className="py-2 px-4 border-b border-purple-500/30">
                             E‑mail para gargantua@gargantuatechnologies.com
                           </td>
                         </tr>
                         <tr>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30 font-medium">Acesso aos dados</td>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30">Mesmo canal</td>
+                          <td className="py-2 px-4 border-b border-[#20BCED]/30 font-medium">Acesso aos dados</td>
+                          <td className="py-2 px-4 border-b border-purple-500/30">Mesmo canal</td>
                         </tr>
                         <tr>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30 font-medium">
+                          <td className="py-2 px-4 border-b border-[#20BCED]/30 font-medium">
                             Correção de dados incompletos ou desatualizados
                           </td>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30">—</td>
+                          <td className="py-2 px-4 border-b border-purple-500/30">—</td>
                         </tr>
                         <tr>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30 font-medium">
+                          <td className="py-2 px-4 border-b border-[#20BCED]/30 font-medium">
                             Anonimização, bloqueio ou eliminação
                           </td>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30">—</td>
+                          <td className="py-2 px-4 border-b border-purple-500/30">—</td>
                         </tr>
                         <tr>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30 font-medium">
+                          <td className="py-2 px-4 border-b border-[#20BCED]/30 font-medium">
                             Portabilidade a outro fornecedor
                           </td>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30">—</td>
+                          <td className="py-2 px-4 border-b border-purple-500/30">—</td>
                         </tr>
                         <tr>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30 font-medium">
+                          <td className="py-2 px-4 border-b border-[#20BCED]/30 font-medium">
                             Informação sobre compartilhamento
                           </td>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30">—</td>
+                          <td className="py-2 px-4 border-b border-purple-500/30">—</td>
                         </tr>
                         <tr>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30 font-medium">
+                          <td className="py-2 px-4 border-b border-[#20BCED]/30 font-medium">
                             Revogação de consentimento
                           </td>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30">
+                          <td className="py-2 px-4 border-b border-purple-500/30">
                             Link no e‑mail ou solicitação direta
                           </td>
                         </tr>
                         <tr>
-                          <td className="py-2 px-4 border-[#126AF9]/30 font-medium">
+                          <td className="py-2 px-4 border-purple-500/30 font-medium">
                             Revisão de decisões automatizadas
                           </td>
-                          <td className="py-2 px-4 border-[#126AF9]/30">—</td>
+                          <td className="py-2 px-4 border-purple-500/30">—</td>
                         </tr>
                       </tbody>
                     </table>
@@ -448,7 +440,7 @@ export function PrivacyContent({ currentLang }: PrivacyContentProps) {
               ) : (
                 <>
                   <h2 className="text-2xl font-bold text-center">Privacy Policy – U.S. Version</h2>
-                  <p className="text-center text-[#B6E1F2]/80">Last updated: April 18, 2025</p>
+                  <p className="text-center text-muted-foreground">Last updated: April 18, 2025</p>
 
                   <h3 className="text-xl font-bold mt-8">1. Introduction</h3>
                   <p>
@@ -468,71 +460,69 @@ export function PrivacyContent({ currentLang }: PrivacyContentProps) {
 
                   <h3 className="text-xl font-bold mt-6">3. Information We Collect</h3>
                   <div className="overflow-x-auto">
-                    <table className="min-w-full border border-[#126AF9]/30 rounded-lg">
-                      <thead>
-                        <tr className="bg-[#126AF9]/10">
-                          <th className="py-2 px-4 border-b border-[#126AF9]/30 text-left">Category</th>
-                          <th className="py-2 px-4 border-b border-[#126AF9]/30 text-left">Examples</th>
-                          <th className="py-2 px-4 border-b border-[#126AF9]/30 text-left">Collected From</th>
+                  <table className="min-w-full border border-[#20BCED]/30 rounded-lg">                      <thead>
+                      <tr className="bg-[#126AF9]/20">                          <th className="py-2 px-4 border-b border-[#20BCED]/30 text-left">Category</th>
+                          <th className="py-2 px-4 border-b border-[#20BCED]/30 text-left">Examples</th>
+                          <th className="py-2 px-4 border-b border-[#20BCED]/30 text-left">Collected From</th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30 font-medium">Identifiers</td>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30">
+                          <td className="py-2 px-4 border-b border-[#20BCED]/30 font-medium">Identifiers</td>
+                          <td className="py-2 px-4 border-b border-purple-500/30">
                             Name, postal address, phone, email, IP address
                           </td>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30">
+                          <td className="py-2 px-4 border-b border-purple-500/30">
                             Directly from you; automatically via devices
                           </td>
                         </tr>
                         <tr>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30 font-medium">
+                          <td className="py-2 px-4 border-b border-[#20BCED]/30 font-medium">
                             Professional / Business Info
                           </td>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30">
+                          <td className="py-2 px-4 border-b border-purple-500/30">
                             Company name, role, industry, employee count, project details
                           </td>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30">Forms, contracts, discovery calls</td>
+                          <td className="py-2 px-4 border-b border-purple-500/30">Forms, contracts, discovery calls</td>
                         </tr>
                         <tr>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30 font-medium">Payment‑Related Data</td>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30">
+                          <td className="py-2 px-4 border-b border-[#20BCED]/30 font-medium">Payment‑Related Data</td>
+                          <td className="py-2 px-4 border-b border-purple-500/30">
                             Billing contact, partial card data, tax ID (if applicable)
                           </td>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30">You; payment processors</td>
+                          <td className="py-2 px-4 border-b border-purple-500/30">You; payment processors</td>
                         </tr>
                         <tr>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30 font-medium">
+                          <td className="py-2 px-4 border-b border-[#20BCED]/30 font-medium">
                             Internet / Device Info
                           </td>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30">
+                          <td className="py-2 px-4 border-b border-purple-500/30">
                             Browser type, OS, referring URLs, clickstream, session time, cookies, pixels, SDK events
                           </td>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30">Automatically</td>
+                          <td className="py-2 px-4 border-b border-purple-500/30">Automatically</td>
                         </tr>
                         <tr>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30 font-medium">Geolocation</td>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30">
+                          <td className="py-2 px-4 border-b border-[#20BCED]/30 font-medium">Geolocation</td>
+                          <td className="py-2 px-4 border-b border-purple-500/30">
                             Approximate city/region (derived from IP or device settings)
                           </td>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30">Automatically</td>
+                          <td className="py-2 px-4 border-b border-purple-500/30">Automatically</td>
                         </tr>
                         <tr>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30 font-medium">
+                          <td className="py-2 px-4 border-b border-[#20BCED]/30 font-medium">
                             User‑Generated Content
                           </td>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30">
+                          <td className="py-2 px-4 border-b border-purple-500/30">
                             Files, code, text, images, feedback, support tickets
                           </td>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30">You</td>
+                          <td className="py-2 px-4 border-b border-purple-500/30">You</td>
                         </tr>
                         <tr>
-                          <td className="py-2 px-4 border-[#126AF9]/30 font-medium">Inference Data</td>
-                          <td className="py-2 px-4 border-[#126AF9]/30">
+                          <td className="py-2 px-4 border-purple-500/30 font-medium">Inference Data</td>
+                          <td className="py-2 px-4 border-purple-500/30">
                             Segments or profiles created from the data above (e.g., "prospective enterprise buyer")
                           </td>
-                          <td className="py-2 px-4 border-[#126AF9]/30">Ourselves; analytics providers</td>
+                          <td className="py-2 px-4 border-purple-500/30">Ourselves; analytics providers</td>
                         </tr>
                       </tbody>
                     </table>
@@ -583,56 +573,54 @@ export function PrivacyContent({ currentLang }: PrivacyContentProps) {
 
                   <h3 className="text-xl font-bold mt-6">6. How We Share Information</h3>
                   <div className="overflow-x-auto">
-                    <table className="min-w-full border border-[#126AF9]/30 rounded-lg">
-                      <thead>
-                        <tr className="bg-[#126AF9]/10">
-                          <th className="py-2 px-4 border-b border-[#126AF9]/30 text-left">Recipient Category</th>
-                          <th className="py-2 px-4 border-b border-[#126AF9]/30 text-left">Purpose</th>
-                          <th className="py-2 px-4 border-b border-[#126AF9]/30 text-left">Safeguards</th>
+                  <table className="min-w-full border border-[#20BCED]/30 rounded-lg">                      <thead>
+                      <tr className="bg-[#126AF9]/20">                          <th className="py-2 px-4 border-b border-[#20BCED]/30 text-left">Recipient Category</th>
+                          <th className="py-2 px-4 border-b border-[#20BCED]/30 text-left">Purpose</th>
+                          <th className="py-2 px-4 border-b border-[#20BCED]/30 text-left">Safeguards</th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30 font-medium">Service Providers</td>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30">
+                          <td className="py-2 px-4 border-b border-[#20BCED]/30 font-medium">Service Providers</td>
+                          <td className="py-2 px-4 border-b border-purple-500/30">
                             Hosting (AWS), analytics (Google Analytics), email (SendGrid), payments (Stripe)
                           </td>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30">
+                          <td className="py-2 px-4 border-b border-purple-500/30">
                             Confidentiality clauses; processing instructions
                           </td>
                         </tr>
                         <tr>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30 font-medium">Advertising Partners</td>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30">
+                          <td className="py-2 px-4 border-b border-[#20BCED]/30 font-medium">Advertising Partners</td>
+                          <td className="py-2 px-4 border-b border-purple-500/30">
                             Ad networks (Meta Ads, Google Ads) for retargeting and attribution
                           </td>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30">
+                          <td className="py-2 px-4 border-b border-purple-500/30">
                             Limited to hashed or pseudonymous IDs
                           </td>
                         </tr>
                         <tr>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30 font-medium">Integration Platforms</td>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30">
+                          <td className="py-2 px-4 border-b border-[#20BCED]/30 font-medium">Integration Platforms</td>
+                          <td className="py-2 px-4 border-b border-purple-500/30">
                             API calls you configure (e.g., Facebook Conversions API, blockchain nodes)
                           </td>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30">As directed by you</td>
+                          <td className="py-2 px-4 border-b border-purple-500/30">As directed by you</td>
                         </tr>
                         <tr>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30 font-medium">Professional Advisors</td>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30">Auditors, lawyers, accountants</td>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30">Duty of confidentiality</td>
+                          <td className="py-2 px-4 border-b border-[#20BCED]/30 font-medium">Professional Advisors</td>
+                          <td className="py-2 px-4 border-b border-purple-500/30">Auditors, lawyers, accountants</td>
+                          <td className="py-2 px-4 border-b border-purple-500/30">Duty of confidentiality</td>
                         </tr>
                         <tr>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30 font-medium">Authorities</td>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30">
+                          <td className="py-2 px-4 border-b border-[#20BCED]/30 font-medium">Authorities</td>
+                          <td className="py-2 px-4 border-b border-purple-500/30">
                             Law enforcement or regulators when legally compelled
                           </td>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30">Verified requests only</td>
+                          <td className="py-2 px-4 border-b border-purple-500/30">Verified requests only</td>
                         </tr>
                         <tr>
-                          <td className="py-2 px-4 border-[#126AF9]/30 font-medium">Business Successor</td>
-                          <td className="py-2 px-4 border-[#126AF9]/30">In case of merger or acquisition</td>
-                          <td className="py-2 px-4 border-[#126AF9]/30">Prior notice where feasible</td>
+                          <td className="py-2 px-4 border-purple-500/30 font-medium">Business Successor</td>
+                          <td className="py-2 px-4 border-purple-500/30">In case of merger or acquisition</td>
+                          <td className="py-2 px-4 border-purple-500/30">Prior notice where feasible</td>
                         </tr>
                       </tbody>
                     </table>
@@ -644,41 +632,39 @@ export function PrivacyContent({ currentLang }: PrivacyContentProps) {
 
                   <h3 className="text-xl font-bold mt-6">7. Cookies, Pixels & Similar Tech</h3>
                   <div className="overflow-x-auto">
-                    <table className="min-w-full border border-[#126AF9]/30 rounded-lg">
-                      <thead>
-                        <tr className="bg-[#126AF9]/10">
-                          <th className="py-2 px-4 border-b border-[#126AF9]/30 text-left">Technology</th>
-                          <th className="py-2 px-4 border-b border-[#126AF9]/30 text-left">Purpose</th>
+                  <table className="min-w-full border border-[#20BCED]/30 rounded-lg">                      <thead>
+                      <tr className="bg-[#126AF9]/20">                          <th className="py-2 px-4 border-b border-[#20BCED]/30 text-left">Technology</th>
+                          <th className="py-2 px-4 border-b border-[#20BCED]/30 text-left">Purpose</th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30 font-medium">
+                          <td className="py-2 px-4 border-b border-[#20BCED]/30 font-medium">
                             Strictly Necessary Cookies
                           </td>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30">Site security, session management</td>
+                          <td className="py-2 px-4 border-b border-purple-500/30">Site security, session management</td>
                         </tr>
                         <tr>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30 font-medium">Analytics Cookies</td>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30">Traffic metrics, feature usage</td>
+                          <td className="py-2 px-4 border-b border-[#20BCED]/30 font-medium">Analytics Cookies</td>
+                          <td className="py-2 px-4 border-b border-purple-500/30">Traffic metrics, feature usage</td>
                         </tr>
                         <tr>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30 font-medium">
+                          <td className="py-2 px-4 border-b border-[#20BCED]/30 font-medium">
                             Advertising Cookies / Pixels
                           </td>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30">
+                          <td className="py-2 px-4 border-b border-purple-500/30">
                             Measure conversions, build remarketing audiences (e.g., Meta Pixel, Google Tag)
                           </td>
                         </tr>
                         <tr>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30 font-medium">Server‑Side Events</td>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30">
+                          <td className="py-2 px-4 border-b border-[#20BCED]/30 font-medium">Server‑Side Events</td>
+                          <td className="py-2 px-4 border-b border-purple-500/30">
                             Facebook Conversions API for more reliable ad attribution
                           </td>
                         </tr>
                         <tr>
-                          <td className="py-2 px-4 border-[#126AF9]/30 font-medium">SDKs</td>
-                          <td className="py-2 px-4 border-[#126AF9]/30">
+                          <td className="py-2 px-4 border-purple-500/30 font-medium">SDKs</td>
+                          <td className="py-2 px-4 border-purple-500/30">
                             Push notifications, crash reporting in mobile apps
                           </td>
                         </tr>
@@ -725,47 +711,45 @@ export function PrivacyContent({ currentLang }: PrivacyContentProps) {
 
                   <h3 className="text-xl font-bold mt-6">11. Your Choices & State‑Specific Rights</h3>
                   <div className="overflow-x-auto">
-                    <table className="min-w-full border border-[#126AF9]/30 rounded-lg">
-                      <thead>
-                        <tr className="bg-[#126AF9]/10">
-                          <th className="py-2 px-4 border-b border-[#126AF9]/30 text-left">Right</th>
-                          <th className="py-2 px-4 border-b border-[#126AF9]/30 text-left">California (CPRA)</th>
-                          <th className="py-2 px-4 border-b border-[#126AF9]/30 text-left">Other U.S. States*</th>
-                          <th className="py-2 px-4 border-b border-[#126AF9]/30 text-left">How to Exercise</th>
+                  <table className="min-w-full border border-[#20BCED]/30 rounded-lg">                      <thead>
+                      <tr className="bg-[#126AF9]/20">                          <th className="py-2 px-4 border-b border-[#20BCED]/30 text-left">Right</th>
+                          <th className="py-2 px-4 border-b border-[#20BCED]/30 text-left">California (CPRA)</th>
+                          <th className="py-2 px-4 border-b border-[#20BCED]/30 text-left">Other U.S. States*</th>
+                          <th className="py-2 px-4 border-b border-[#20BCED]/30 text-left">How to Exercise</th>
                         </tr>
                       </thead>
                       <tbody>
                         <tr>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30 font-medium">Access / Know</td>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30">✓</td>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30">Varies</td>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30">
+                          <td className="py-2 px-4 border-b border-[#20BCED]/30 font-medium">Access / Know</td>
+                          <td className="py-2 px-4 border-b border-purple-500/30">✓</td>
+                          <td className="py-2 px-4 border-b border-purple-500/30">Varies</td>
+                          <td className="py-2 px-4 border-b border-purple-500/30">
                             Email gargantua@gargantuatechnologies.com
                           </td>
                         </tr>
                         <tr>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30 font-medium">Delete</td>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30">✓</td>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30">Varies</td>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30">Same as above</td>
+                          <td className="py-2 px-4 border-b border-[#20BCED]/30 font-medium">Delete</td>
+                          <td className="py-2 px-4 border-b border-purple-500/30">✓</td>
+                          <td className="py-2 px-4 border-b border-purple-500/30">Varies</td>
+                          <td className="py-2 px-4 border-b border-purple-500/30">Same as above</td>
                         </tr>
                         <tr>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30 font-medium">Correct</td>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30">✓</td>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30">Varies</td>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30">Same as above</td>
+                          <td className="py-2 px-4 border-b border-[#20BCED]/30 font-medium">Correct</td>
+                          <td className="py-2 px-4 border-b border-purple-500/30">✓</td>
+                          <td className="py-2 px-4 border-b border-purple-500/30">Varies</td>
+                          <td className="py-2 px-4 border-b border-purple-500/30">Same as above</td>
                         </tr>
                         <tr>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30 font-medium">Opt‑Out of Sale/Share</td>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30">✓</td>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30">"Do Not Sell/Share" link or email</td>
-                          <td className="py-2 px-4 border-b border-[#126AF9]/30"></td>
+                          <td className="py-2 px-4 border-b border-[#20BCED]/30 font-medium">Opt‑Out of Sale/Share</td>
+                          <td className="py-2 px-4 border-b border-purple-500/30">✓</td>
+                          <td className="py-2 px-4 border-b border-purple-500/30">"Do Not Sell/Share" link or email</td>
+                          <td className="py-2 px-4 border-b border-purple-500/30"></td>
                         </tr>
                         <tr>
-                          <td className="py-2 px-4 border-[#126AF9]/30 font-medium">Limit Use of Sensitive PI</td>
-                          <td className="py-2 px-4 border-[#126AF9]/30">✓</td>
-                          <td className="py-2 px-4 border-[#126AF9]/30">—</td>
-                          <td className="py-2 px-4 border-[#126AF9]/30">
+                          <td className="py-2 px-4 border-purple-500/30 font-medium">Limit Use of Sensitive PI</td>
+                          <td className="py-2 px-4 border-purple-500/30">✓</td>
+                          <td className="py-2 px-4 border-purple-500/30">—</td>
+                          <td className="py-2 px-4 border-purple-500/30">
                             Not applicable (we do not process Sensitive PI)
                           </td>
                         </tr>
