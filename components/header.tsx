@@ -18,12 +18,14 @@ const translations = {
     about: "Sobre Nós",
     portfolio: "Portfólio",
     workWithUs: "Trabalhe conosco",
+    bePartner: "Seja nosso parceiro",
   },
   en: {
     contact: "Contact",
     about: "About Us",
     portfolio: "Portfolio",
     workWithUs: "Work with us",
+    bePartner: "Be our partner",
   },
 }
 
@@ -102,6 +104,12 @@ export function Header({ currentLang, onLanguageChange, currentPage = "home" }: 
                 {t.workWithUs}
               </button>
             </WorkWithUsDialog>
+            <button 
+              onClick={() => window.open('https://paypartners.gargantuatechnologies.com/', '_blank')}
+              className="text-[#c5d4e6] hover:text-[#e8eef5] transition-colors font-medium text-sm px-4 py-1.5 rounded-full hover:bg-[#126AF9]/10"
+            >
+              {t.bePartner}
+            </button>
           <Button
             variant="outline"
             size="sm"
@@ -193,6 +201,15 @@ export function Header({ currentLang, onLanguageChange, currentPage = "home" }: 
                 className="text-[#c5d4e6] hover:text-[#e8eef5] transition-colors font-medium text-sm px-3 py-2 rounded-full hover:bg-[#126AF9]/10 text-left w-full"
               >
                 {t.workWithUs}
+              </button>
+              <button 
+                onClick={() => {
+                  setIsMobileMenuOpen(false)
+                  window.open('https://paypartners.gargantuatechnologies.com/', '_blank')
+                }}
+                className="text-[#c5d4e6] hover:text-[#e8eef5] transition-colors font-medium text-sm px-3 py-2 rounded-full hover:bg-[#126AF9]/10 text-left w-full"
+              >
+                {t.bePartner}
               </button>
               <Button
                 variant="outline"
